@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IEEE UIU Student Branch | Utsha</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Bright dynamic background */
+    body{
+      background: linear-gradient(120deg,#e0f2fe,#e9d5ff,#ffe4e6,#fde68a,#bbf7d0);
+      background-size:600% 600%;
+      animation: cosmicShift 20s ease-in-out infinite;
+      color:#111827;
+    }
+    @keyframes cosmicShift{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    .sky,.aurora,#space{display:none} /* keep page light */
+
+    header{ background:rgba(255,255,255,.65); backdrop-filter:blur(12px); box-shadow:0 8px 20px rgba(0,0,0,.08); }
+
+    .wrap{ max-width:1100px; margin:26px auto; padding:0 18px; }
+
+    /* Hero with logo */
+    .ieee-hero{
+      display:flex; gap:18px; align-items:center; justify-content:flex-start;
+      background:rgba(255,255,255,.8); border:1px solid rgba(0,0,0,.06);
+      border-radius:18px; padding:18px; box-shadow:0 10px 28px rgba(0,0,0,.08);
+    }
+    nav a {
+  text-decoration: none;
+  color: #1e3a8a;               /* dark blue for contrast */
+  font-weight: 600;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: #2563eb;               /* bright blue on hover */
+  text-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+}
+
+    .ieee-logo{
+      width:140px; height:140px; border-radius:12px; object-fit:cover;
+      background:#fff; border:1px solid rgba(0,0,0,.06);
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+    }
+    .ieee-hero h2{ margin:0 0 6px; color:#1d4ed8; }
+    .ieee-hero p{ margin:0; color:#334155; }
+
+    /* Section blocks */
+    .section{
+      background:rgba(255,255,255,.82); border:1px solid rgba(0,0,0,.06);
+      border-radius:18px; padding:20px; margin:18px 0;
+      box-shadow:0 10px 28px rgba(0,0,0,.08);
+    }
+    .section h3{ margin-top:0; color:#1d4ed8; }
+
+    /* Positions list */
+    .positions li{ margin:6px 0; }
+
+    /* Memories gallery + lightbox */
+    .gallery{
+      display:grid; gap:14px;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    }
+    .gallery img{
+      width:100%; height:auto; display:block; border-radius:12px;
+      box-shadow:0 4px 16px rgba(0,0,0,.1); cursor:zoom-in;
+      transition:transform .2s ease;
+    }
+    .gallery img:hover{ transform:scale(1.02); }
+
+    .lightbox{
+      position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+      background:rgba(0,0,0,.75); z-index:999;
+    }
+    .lightbox.open{ display:flex; }
+    .lightbox-content{ position:relative; max-width:95%; max-height:90%; }
+    .lightbox-content img{ max-width:100%; max-height:90vh; border-radius:10px; box-shadow:0 12px 40px rgba(0,0,0,.4); }
+    .lightbox .close{
+      position:absolute; top:10px; right:10px; background:rgba(255,255,255,.95);
+      border:none; border-radius:50%; padding:5px 10px; font-size:20px; cursor:pointer;
+      box-shadow:0 4px 10px rgba(0,0,0,.25);
+    }
+    .ieee-hero p,
+.section p,
+.section h3 {
+  color: #111827;          /* dark navy gray */
+  font-weight: 500;
+  opacity: 1;              /* ensure full opacity */
+  text-shadow: none;       /* remove any blending */
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;">
+      <h1 class="brand" style="margin:0;">Utsha</h1>
+      <ul style="list-style:none;display:flex;gap:18px;margin:0;padding:0;">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="activities.html">Activities</a></li>
+       
+         <li><a href="index.html#projects">Projects</a></li>
+  <li><a href="index.html#publications">Publications</a></li>
+  <li><a href="index.html#cv">CV</a></li>
+  <li><a href="hobbies.html">Hobbies</a></li>
+  <li><a href="activities.html">Activities</a></li>
+  <li><a href="index.html#contact">Contact</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="ieee-hero">
+      <!-- Use your logo file path -->
+      <img class="ieee-logo" src="ieee_logo.jpg" alt="IEEE UIU Student Branch Logo">
+      <div>
+        <h2>IEEE UIU Student Branch</h2>
+        <p>As an active member and later Chairperson, I led initiatives that fostered technical learning,
+           research exposure, and community building among UIU students.</p>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="section">
+      <h3>About IEEE UIU SB</h3>
+      <p>The IEEE UIU Student Branch at United International University fosters a vibrant community of aspiring engineers and technologists. As a local chapter of the global IEEE network, it offers students hands-on exposure through workshops, hackathons, and research-driven events. Members gain opportunities to collaborate on real-world projects, develop leadership skills, and connect with peers and professionals across the field..</p>
+    </section>
+
+    <!-- Positions -->
+    <section class="section">
+      <h3>My Positions</h3>
+      <ul class="positions">
+        <li><strong>Chairperson</strong> — 2024–2025</li>
+        <li><strong>Member</strong> — 2021–2023</li>
+      </ul>
+    </section>
+
+    <!-- Memories -->
+    <section class="section">
+      <h3>Memories</h3>
+      <div class="gallery">
+        <!-- Replace with your real images -->
+        <img src="ieeeim1.jpg" alt="IEEE event memory 1" loading="lazy">
+        <img src="ieeeim2.jpg" alt="IEEE event memory 2" loading="lazy">
+        <img src="ieeeim3.jpg" alt="IEEE event memory 3" loading="lazy">
+        <img src="ieeeim4.jpg" alt="IEEE event memory 4" loading="lazy">
+        <img src="ieeeim5.jpg" alt="IEEE event memory 4" loading="lazy">
+        <img src="ieeeim6.jpg" alt="IEEE event memory 4" loading="lazy">
+        <img src="ieeeim7.jpg" alt="IEEE event memory 4" loading="lazy">
+       <!-- Rimage 8 -->
+        <img src="ieeeim9.jpg" alt="IEEE event memory 4" loading="lazy">
+      </div>
+    </section>
+  </main>
+
+  <footer style="text-align:center;color:#334155;padding:22px;">© <span id="year"></span> Md. Awinul Hoque Utsha</footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="close" id="lb-close">×</button>
+      <img id="lb-img" src="" alt="">
+    </div>
+  </div>
+
+  <script>
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // simple lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbClose = document.getElementById('lb-close');
+    document.querySelectorAll('.gallery img').forEach(img=>{
+      img.addEventListener('click', ()=>{
+        lbImg.src = img.src;
+        lbImg.alt = img.alt || '';
+        lb.classList.add('open');
+      });
+    });
+    lbClose.addEventListener('click', ()=> lb.classList.remove('open'));
+    lb.addEventListener('click', e=> { if(e.target===lb) lb.classList.remove('open'); });
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') lb.classList.remove('open'); });
+  </script>
+</body>
+</html>

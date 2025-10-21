@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Utsha | Activities</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ======= Bright Cosmic Background ======= */
+    body {
+      background: radial-gradient(circle at 25% 25%, #dbeafe 0%, #c7d2fe 30%, #f5d0fe 55%, #ffe4e6 80%);
+      background-attachment: fixed;
+      background-size: cover;
+      color: #1e1e2f;
+    }
+
+    .sky, .aurora, #space {
+      display: none; /* remove dark canvas/aurora layers */
+    }
+
+    header {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      color: #1e293b;
+    }
+    nav a:hover, nav a.active {
+      color: #2563eb;
+      text-shadow: 0 0 8px rgba(37,99,235,0.3);
+    }
+
+    .section {
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+      color: #111827;
+    }
+
+    .section h3 {
+      color: #1d4ed8;
+      font-size: 26px;
+      text-shadow: 0 0 6px rgba(147,197,253,0.4);
+    }
+
+    .activity {
+      margin: 22px auto;
+      max-width: 700px;
+      text-align: left;
+      background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(241,245,249,0.7));
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 14px;
+      padding: 18px 22px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .activity:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(59,130,246,0.25);
+    }
+    .activity h4 {
+      color: #2563eb;
+      margin: 0 0 6px;
+    }
+    .activity p {
+      margin: 3px 0;
+      color: #374151;
+    }
+
+    footer {
+      color: #334155;
+    }
+    /* tiny CTA inside cards */
+.see-more { margin-top: 10px; }
+.mini-btn{
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:10px;
+  background:linear-gradient(135deg,#2563eb,#60a5fa);
+  color:#fff; text-decoration:none; font-weight:600; font-size:14px;
+  box-shadow:0 6px 16px rgba(37,99,235,.25);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.mini-btn:hover{ transform:translateY(-2px); box-shadow:0 10px 22px rgba(37,99,235,.35); }
+
+/* faint watermark logo for the IEEE card (adjust path if needed) */
+.activity.ieee{ position:relative; overflow:hidden; background:rgba(255,255,255,.85); }
+.activity.ieee::before{
+  content:""; position:absolute; inset:0;
+  background:url('images/ieee.png') center/contain no-repeat;
+  opacity:.12; z-index:0;
+}
+.activity.ieee *{ position:relative; z-index:1; }
+.activity.edf {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 14px;
+}
+.activity.edf::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('images/edf.png') center/contain no-repeat;
+  opacity: 0.12;     /* makes the logo faint */
+  z-index: 0;
+}
+.activity.edf * {
+  position: relative;
+  z-index: 1;        /* ensures text is visible above logo */
+}
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <h1 class="brand">Utsha</h1>
+      <ul>
+       <li><a href="index.html#about">Home</a></li>
+  <li><a href="index.html#skills">Skills</a></li>
+  <li><a href="index.html#projects">Projects</a></li>
+  <li><a href="index.html#publications">Publications</a></li>
+  <li><a href="index.html#cv">CV</a></li>
+  <li><a href="hobbies.html">Hobbies</a></li>
+  <li><a href="activities.html">Activities</a></li>
+  <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Activities Section -->
+  <section class="section">
+    <h3>Activities</h3>
+
+    <div class="activity ieee">
+  <h4>IEEE UIU Student Branch</h4>
+  <p><strong>Chairperson</strong> (2024–2025)</p>
+  <p><strong>Member</strong> (2021–2023)</p>
+
+  <div class="see-more">
+    <a class="mini-btn" href="ieee.html">See more →</a>
+  </div>
+</div>
+
+    <div class="activity edf">
+  <h4>UIU Entrepreneur Development Forum</h4>
+  <p><strong>President</strong> (2023–2024)</p>
+  <p><strong>Head of PR</strong> (2022–2023)</p>
+  <p><strong>Executive</strong> (2021–2022)</p>
+  <p><strong>Member</strong> (2020–2021)</p>
+
+  <div class="see-more">
+    <a class="mini-btn" href="edf.html">See more →</a>
+  </div>
+</div>
+
+
+    <div class="activity">
+      <h4>UIU Cultural Club</h4>
+      <p><strong>General Member</strong> (2020–2023)</p>
+    </div>
+
+    <div class="activity">
+      <h4>UIU HR Forum</h4>
+      <p><strong>General Member</strong> (2020–2023)</p>
+    </div>
+
+    <div class="activity">
+      <h4>UIU App Forum</h4>
+      <p><strong>General Member</strong> (2020–2023)</p>
+    </div>
+
+    <div class="activity">
+      <h4>Amnesty International</h4>
+      <p><strong>General Member</strong> (2019–Present)</p>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Md. Awinul Hoque Utsha
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
