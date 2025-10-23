@@ -15,6 +15,7 @@
       --card: hsla(0,0%,100%,.85); --card-solid:#ffffff; --card-border: rgba(24,24,27,.08);
       --shadow: 0 12px 34px rgba(2,6,23,.12), 0 2px 6px rgba(2,6,23,.06);
       --radius: 18px; --radius-lg:22px;
+      --maxw:1120px;
     }
     .dark:root{
       --ink:#e5e7eb; --ink-sub:#cbd5e1; --muted:#94a3b8;
@@ -33,7 +34,7 @@
     @keyframes cosmicShift{ 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
     @media (prefers-reduced-motion: reduce){ body{ animation:none; } }
 
-    .wrap{ max-width:1120px; margin:0 auto; padding:16px; }
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:16px; }
     @media (min-width:640px){ .wrap{ padding:22px; } }
 
     /* Header */
@@ -42,16 +43,25 @@
     .navbar{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
     .brand{ margin:0; font-size:1.35rem; font-weight:800; letter-spacing:.2px; background:var(--brand-grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
-    .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:12px; border:1px solid var(--card-border); background:var(--card-solid); box-shadow:0 6px 16px rgba(2,6,23,.06); cursor:pointer; }
+    .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:12px; border:1px solid var(--card-border); background:var(--card-solid); box-shadow:0 6px 16px rgba(2,6,23,.06); cursor:pointer; -webkit-tap-highlight-color: transparent; }
     .nav-links{ display:none; flex-direction:column; gap:8px; padding:12px; margin:10px 0 0; background:var(--card); border:1px solid var(--card-border); border-radius:14px; box-shadow:var(--shadow); }
     .nav-links a{ text-decoration:none; color:#1e3a8a; font-weight:600; padding:10px 12px; border-radius:10px; }
     .nav-links a:hover, .nav-links a:focus, .nav-links a.active{ color:var(--brand-strong); background:rgba(37,99,235,.1); }
     .nav-open .nav-links{ display:flex; }
-    @media (min-width:768px){ .nav-toggle{ display:none; } .nav-links{ display:flex; flex-direction:row; align-items:center; gap:16px; background:transparent; border:none; box-shadow:none; padding:0; margin:0; } .nav-links a{ padding:8px 10px; } }
+    @media (min-width:768px){
+      .nav-toggle{ display:none; }
+      .nav-links{ display:flex; flex-direction:row; align-items:center; gap:16px; background:transparent; border:none; box-shadow:none; padding:0; margin:0; }
+      .nav-links a{ padding:8px 10px; }
+    }
 
     /* Dark mode toggle */
-    .mode{ display:inline-flex; align-items:center; gap:8px; border:1px solid var(--card-border); background:var(--card-solid); border-radius:999px; padding:6px 10px; cursor:pointer; box-shadow:0 6px 16px rgba(2,6,23,.06); font-weight:600; }
+    .mode{ display:inline-flex; align-items:center; gap:8px; border:1px solid var(--card-border); background:var(--card-solid); border-radius:999px; padding:6px 10px; cursor:pointer; box-shadow:0 6px 16px rgba(2,6,23,.06); font-weight:600; -webkit-tap-highlight-color: transparent; }
     .mode svg{ width:18px; height:18px; }
+
+    /* Focus visible for keyboard users */
+    :where(a, button, input, .chip, .btn):focus-visible{
+      outline: 2px solid #60a5fa; outline-offset: 2px; border-radius: 12px;
+    }
 
     /* Hero */
     .hero{ position:relative; border-radius:var(--radius-lg); padding:18px; margin:16px 0; background:var(--card); border:1px solid var(--card-border); box-shadow:var(--shadow); overflow:hidden; }
@@ -83,7 +93,7 @@
     .badges{ display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
     .badge{ font-size:.85rem; padding:6px 10px; border-radius:999px; border:1px solid var(--card-border); background:var(--card-solid); color:var(--muted); font-weight:600; }
 
-    .actions{ display:flex; gap:10px; margin-top:auto; }
+    .actions{ display:flex; gap:10px; margin-top:auto; flex-wrap:wrap; }
     .btn{ display:inline-flex; align-items:center; gap:8px; text-decoration:none; padding:10px 12px; border-radius:12px; border:1px solid var(--card-border); background:var(--card-solid); font-weight:700; color:#0f172a; }
     .btn.primary{ background: linear-gradient(135deg,#60a5fa,#a78bfa); color:white; border:none; }
     .dark .btn{ color:#e5e7eb; }
@@ -97,17 +107,17 @@
       <h1 class="brand">Utsha</h1>
       <div style="display:flex; align-items:center; gap:8px;">
         <button class="mode" id="modeBtn" aria-label="Toggle dark mode">
-          <svg id="modeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg id="modeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <span id="modeText">Dark</span>
         </button>
         <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="#111827" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="#111827" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
       </div>
       <nav id="navMenu" class="nav-links">
         <a href="index.html">Home</a>
         <a href="index.html#skills">Skills</a>
-        <a href="index.html#projects" class="active">Projects</a>
+        <a href="index.html#projects" class="active" aria-current="page">Projects</a>
         <a href="index.html#publications">Publications</a>
         <a href="index.html#cv">CV</a>
         <a href="hobbies.html">Hobbies</a>
@@ -128,7 +138,7 @@
           <button class="chip" data-filter="systems" role="tab">Systems</button>
         </div>
         <label class="search" aria-label="Search projects">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           <input type="search" id="projectSearch" placeholder="Search title, stack…" />
         </label>
       </div>
@@ -138,10 +148,10 @@
       <!-- Orange -->
       <article class="card" data-tags="web php mysql uiu social">
         <div class="banner" aria-hidden="true">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.6" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         </div>
         <h4>Orange</h4>
-        <p>Social networking platform for UIU students and faculty with posts, comments, and real‑time updates.</p>
+        <p>Social networking platform for UIU students and faculty with posts, comments, and real-time updates.</p>
         <div class="badges">
           <span class="badge">PHP</span>
           <span class="badge">MySQL</span>
@@ -149,18 +159,18 @@
           <span class="badge">Web</span>
         </div>
         <div class="actions">
-          <a class="btn primary" href="#" aria-label="View Orange live demo">Live Demo</a>
-          <a class="btn" href="#" aria-label="Open Orange source on GitHub">GitHub</a>
+          <a class="btn primary" href="#" aria-label="View Orange live demo" rel="noopener">Live Demo</a>
+          <a class="btn" href="#" aria-label="Open Orange source on GitHub" rel="noopener">GitHub</a>
         </div>
       </article>
 
       <!-- BrainBoost -->
       <article class="card" data-tags="web django sqlite charts elearning ml">
         <div class="banner" aria-hidden="true">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.6"><path d="M4 4h16v12H4z"/><path d="M2 20h20"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.6" aria-hidden="true"><path d="M4 4h16v12H4z"/><path d="M2 20h20"/></svg>
         </div>
         <h4>BrainBoost</h4>
-        <p>Interactive e‑learning app with quiz engine and analytics dashboard.</p>
+        <p>Interactive e-learning app with quiz engine and analytics dashboard.</p>
         <div class="badges">
           <span class="badge">Django</span>
           <span class="badge">SQLite</span>
@@ -168,15 +178,15 @@
           <span class="badge">Web</span>
         </div>
         <div class="actions">
-          <a class="btn primary" href="#">Live Demo</a>
-          <a class="btn" href="#">GitHub</a>
+          <a class="btn primary" href="#" rel="noopener">Live Demo</a>
+          <a class="btn" href="#" rel="noopener">GitHub</a>
         </div>
       </article>
 
       <!-- UMOS -->
       <article class="card" data-tags="systems react node mongodb elms">
         <div class="banner" aria-hidden="true">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.6"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h6"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.6" aria-hidden="true"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h6"/></svg>
         </div>
         <h4>UMOS</h4>
         <p>Enhanced ELMS with class scheduling, grading automation, and secure submissions.</p>
@@ -187,8 +197,8 @@
           <span class="badge">Systems</span>
         </div>
         <div class="actions">
-          <a class="btn primary" href="#">Live Demo</a>
-          <a class="btn" href="#">GitHub</a>
+          <a class="btn primary" href="#" rel="noopener">Live Demo</a>
+          <a class="btn" href="#" rel="noopener">GitHub</a>
         </div>
       </article>
     </section>
@@ -200,23 +210,46 @@
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile nav toggle
+    // Mobile nav toggle + close behaviors
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
     const header = document.querySelector('header');
+
+    function closeMenu(){
+      header.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
     navToggle.addEventListener('click', () => {
       const open = header.classList.toggle('nav-open');
       navToggle.setAttribute('aria-expanded', String(open));
+      if (open) navToggle.focus();
     });
-    navMenu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-      header.classList.remove('nav-open');
-      navToggle.setAttribute('aria-expanded','false');
-    }));
+    // close on link click
+    navMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    // close on ESC
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+    // close on outside click (mobile)
+    document.addEventListener('click', e => {
+      if (!header.contains(e.target) && header.classList.contains('nav-open')) closeMenu();
+    });
 
-    // Dark mode toggle
+    // Mark active link for current page
+    (function markActive(){
+      const here = location.pathname.split('/').pop() || 'index.html';
+      const links = document.querySelectorAll('#navMenu a');
+      links.forEach(a => {
+        const href = a.getAttribute('href') || '';
+        const file = href.split('#')[0].split('/').pop() || 'index.html';
+        if (file === here || (here === '' && file === 'index.html')) {
+          a.classList.add('active');
+          a.setAttribute('aria-current', 'page');
+        }
+      });
+    })();
+
+    // Dark mode toggle (persisting)
     const modeBtn = document.getElementById('modeBtn');
     const modeText = document.getElementById('modeText');
-    const modeIcon = document.getElementById('modeIcon');
     const root = document.documentElement;
     const saved = localStorage.getItem('utsha-theme');
     if(saved === 'dark'){ root.classList.add('dark'); modeText.textContent='Light'; }
@@ -227,7 +260,7 @@
       localStorage.setItem('utsha-theme', isDark ? 'dark' : 'light');
     });
 
-    // Simple filter + search
+    // Filter + debounced search
     const chips = document.querySelectorAll('.chip');
     const grid = document.getElementById('projectGrid');
     const cards = Array.from(grid.querySelectorAll('.card'));
@@ -239,7 +272,8 @@
       cards.forEach(card=>{
         const tags = (card.dataset.tags||'').toLowerCase();
         const matchFilter = active === 'all' || tags.includes(active);
-        const matchQuery = !q || card.textContent.toLowerCase().includes(q) || tags.includes(q);
+        const text = card.textContent.toLowerCase();
+        const matchQuery = !q || text.includes(q) || tags.includes(q);
         card.style.display = (matchFilter && matchQuery) ? '' : 'none';
       });
     }
@@ -249,7 +283,13 @@
       ch.classList.add('active');
       applyFilters();
     }));
-    search.addEventListener('input', applyFilters);
+
+    // debounce for smoother typing
+    let t;
+    search.addEventListener('input', ()=>{
+      clearTimeout(t);
+      t = setTimeout(applyFilters, 120);
+    });
   </script>
 </body>
 </html>
