@@ -1,130 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Utsha | Publications</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Utsha | Publications (Timeline)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ===== Dynamic bright cosmic background ===== */
-    body {
-      background: linear-gradient(120deg, #e0f2fe, #e9d5ff, #ffe4e6, #fde68a, #bbf7d0);
-      background-size: 600% 600%;
-      animation: cosmicShift 20s ease-in-out infinite;
-      font-family: "Poppins", sans-serif;
-      color: #111827;
-      margin: 0;
+    :root{
+      --ink:#0b1220; --ink-sub:#334155; --muted:#64748b;
+      --brand:#1d4ed8; --brand-strong:#2563eb;
+      --bg-grad:linear-gradient(120deg,#e0f2fe,#e9d5ff,#ffe4e6,#fde68a,#bbf7d0);
+      --card: rgba(255,255,255,.88); --card-solid:#fff; --card-border: rgba(0,0,0,.08);
+      --shadow: 0 10px 28px rgba(2,6,23,.12);
+      --radius: 16px; --radius-lg:22px;
     }
-    @keyframes cosmicShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+    html{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; scroll-behavior:smooth;}
+    body{ margin:0; color:var(--ink); background:var(--bg-grad); background-size:600% 600%; animation:cosmicShift 20s ease-in-out infinite; }
+    @keyframes cosmicShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    @media (prefers-reduced-motion:reduce){ body{ animation:none; } }
 
-    header {
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 30px;
-    }
-    nav h1 {
-      font-size: 22px;
-      font-weight: 700;
-      color: #1d4ed8;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
-    }
-    nav a {
-      text-decoration: none;
-      color: #1e293b;
-      font-weight: 500;
-    }
-    nav a:hover, nav a.active {
-      color: #2563eb;
-      text-shadow: 0 0 6px rgba(37, 99, 235, 0.4);
-    }
+    /* Hide BibTeX textareas entirely (keeps copy working) */
+    textarea.sr{ display:none !important; }
 
-    /* ===== Publications Section ===== */
-    .section {
-      background: rgba(255, 255, 255, 0.8);
-      margin: 40px auto;
-      max-width: 950px;
-      border-radius: 18px;
-      padding: 30px 25px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    }
-    h3 {
-      text-align: center;
-      color: #1d4ed8;
-      font-size: 28px;
-      text-shadow: 0 0 6px rgba(147,197,253,0.4);
-    }
+    header{ position:sticky; top:0; z-index:40; background:rgba(255,255,255,.7); backdrop-filter:blur(12px); border-bottom:1px solid var(--card-border); }
+    nav{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 20px; }
+    .brand{ margin:0; font-size:1.25rem; font-weight:800; color:#1d4ed8; }
+    nav ul{ list-style:none; display:flex; gap:16px; margin:0; padding:0; flex-wrap:wrap; }
+    nav a{ text-decoration:none; color:#1e293b; font-weight:600; }
+    nav a:hover, nav a.active{ color:#2563eb; text-shadow:0 0 6px rgba(37,99,235,.35); }
 
-    .pub-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(241,245,249,0.85));
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 14px;
-      padding: 18px 22px;
-      margin: 18px 0;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .pub-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.12);
-    }
+    .wrap{ max-width:1100px; margin:0 auto; padding:18px; }
+    .hero{ position:relative; margin:16px 0; padding:18px; border-radius:var(--radius-lg); background:var(--card); border:1px solid var(--card-border); box-shadow:var(--shadow); overflow:hidden; }
+    .hero:before{ content:""; position:absolute; inset:-2px; border-radius:calc(var(--radius-lg) + 2px); padding:2px;
+      background:conic-gradient(from 180deg, #60a5fa,#a78bfa,#f472b6,#34d399,#60a5fa);
+      -webkit-mask:linear-gradient(#0000,#0000) content-box, linear-gradient(#000,#000); -webkit-mask-composite:xor; mask-composite:exclude; opacity:.25; animation:spin 8s linear infinite; }
+    @keyframes spin{to{transform:rotate(1turn)}}
+    .hero h2{ margin:0 0 6px; font-size:1.55rem; color:var(--ink); }
+    .hero p{ margin:0; color:var(--muted); }
 
-    .pub-card h4 {
-      margin: 0 0 6px;
-      color: #111827;
-      font-size: 18px;
-    }
-    .pub-card p {
-      margin: 2px 0;
-      color: #334155;
-      font-size: 15px;
-      line-height: 1.5;
-    }
+    .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .chip{ padding:8px 12px; border-radius:999px; border:1px solid var(--card-border); background:var(--card-solid); font-weight:600; cursor:pointer; }
+    .chip.active{ background:rgba(37,99,235,.12); color:#1d4ed8; border-color:#93c5fd; }
+    .search{ flex:1 1 240px; min-width:200px; display:flex; align-items:center; gap:8px; border:1px solid var(--card-border); border-radius:12px; padding:8px 10px; background:var(--card-solid); }
+    .search input{ width:100%; border:0; outline:0; background:transparent; color:var(--ink); font:inherit; }
 
-    .pub-links {
-      margin-top: 10px;
-    }
-    .pub-links a {
-      text-decoration: none;
-      display: inline-block;
-      margin-right: 10px;
-      margin-top: 6px;
-      background: linear-gradient(135deg, #2563eb, #60a5fa);
-      color: white;
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .pub-links a:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 12px rgba(37,99,235,0.4);
-    }
+    .section{ background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); margin:16px 0; }
+    .timeline{ position:relative; margin:0; padding:0; list-style:none; }
+    .timeline:before{ content:""; position:absolute; left:12px; top:0; bottom:0; width:2px; background:linear-gradient(#93c5fd,#fbcfe8); opacity:.7; }
+    .item{ position:relative; margin:16px 0 16px 28px; }
+    .node{ position:absolute; left:-18px; top:10px; width:12px; height:12px; border-radius:999px; background:linear-gradient(135deg,#60a5fa,#f472b6); box-shadow:0 0 0 4px rgba(99,102,241,.18); }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #334155;
-    }
+    .pub-card{ background:linear-gradient(135deg, rgba(255,255,255,.96), rgba(241,245,249,.9)); border:1px solid var(--card-border);
+      border-radius:14px; padding:16px; box-shadow:0 6px 18px rgba(0,0,0,.08); transition:transform .2s ease, box-shadow .2s ease; }
+    .pub-card:hover{ transform:translateY(-3px); box-shadow:0 16px 36px rgba(2,6,23,.14); }
+    .meta-row{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:6px 0 10px; }
+    .badge{ display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; border:1px solid var(--card-border); background:var(--card-solid); color:var(--muted); font-weight:700; font-size:.8rem; }
+    .dot{ width:8px; height:8px; border-radius:999px; }
+    .pub-title{ margin:0 0 8px; font-size:1.06rem; color:var(--ink); }
+    .pub-meta{ margin:2px 0; color:var(--ink-sub); font-size:.95rem; line-height:1.55; }
+    .pub-links{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+    .btn{ text-decoration:none; display:inline-flex; align-items:center; gap:8px; padding:9px 12px; border-radius:12px; background:linear-gradient(135deg,#2563eb,#60a5fa); color:#fff; font-weight:800; border:none; cursor:pointer; }
+    .btn.secondary{ background:#fff; color:#0f172a; border:1px solid var(--card-border); }
+
+    footer{ text-align:center; color:#334155; padding:24px; }
+    @media (max-width:600px){ nav ul{ gap:10px; } .pub-card{ padding:14px; } }
   </style>
 </head>
 <body>
@@ -132,105 +73,223 @@
     <nav>
       <h1 class="brand">Utsha</h1>
       <ul>
-        
-           <li><a class="active" href="index.html#about">Home</a></li>
-  <li><a class="active" href="index.html#skills">Skills</a></li>
-  <li><a class="active" href="index.html#projects">Projects</a></li>
-  <li><a class="active" href="index.html#publications">Publications</a></li>
-  <li><a class="active" href="index.html#cv">CV</a></li>
-  <li><a class="active" href="hobbies.html">Hobbies</a></li>
-  <li><a class="active" href="index.html#contact">Contact</a></li>
+        <li><a href="index.html#about">Home</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a class="active" href="index.html#publications">Publications</a></li>
+        <li><a href="index.html#cv">CV</a></li>
+        <li><a href="hobbies.html">Hobbies</a></li>
+        <li><a class="active" href="activities.html">Activities</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <section class="section">
-    <h3>Publications</h3>
-
-    <!-- 1 -->
-    <div class="pub-card">
-      <h4>Decision Tree using Feature Grouping — IEEE ICCIT 2023</h4>
-      <p><strong>Authors:</strong> Neamul Islam Fahim, Md. Awinul Hoque Utsha, Raj Shekhar Karmaker, Md Oli Ullah, Dewan Md. Farid</p>
-      <p><strong>Conference:</strong> International Conference on Computer and Information Technology (ICCIT), IEEE, 2023, pp. 1–6.</p>
-      <div class="pub-links">
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:u-x6o8ySG0sC" target="_blank">Google Scholar</a>
-        <a href="https://www.researchgate.net/publication/378534829_Decision_Tree_using_Feature_Grouping?_sg%5B0%5D=bDp9Wf6o7kZuBIsESVcsPuSzTFquVd1fLs_YNNdXPR9y_QsBDquMnXqP_U_Pf_tpcA5vQ6_dfGIZ6C1QHVo8NG3u_mh9eD16MQQRxr8A.ts9o7Hi2S5lgDGnYMvwH0mwxzsO_Vq8AWMpckKv7JLdv9-H5K5s2EVW3NMZb3FrhoYlB8LjisJUyXrcBuEbmYA&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImxvZ2luIiwicGFnZSI6InByb2ZpbGUiLCJwcmV2aW91c1BhZ2UiOiJwcm9maWxlIiwicG9zaXRpb24iOiJwYWdlQ29udGVudCJ9fQ" target="_blank">ResearchGate</a>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="pubs-title">
+      <h2 id="pubs-title">Publications</h2>
+      <p>Peer-reviewed papers and conference contributions. Filter by year or search titles/authors.</p>
+      <div class="controls">
+        <div class="chips" role="tablist" aria-label="Year filters">
+          <button class="chip active" data-year="all" role="tab" aria-selected="true">All</button>
+          <button class="chip" data-year="2025" role="tab">2025</button>
+          <button class="chip" data-year="2024" role="tab">2024</button>
+          <button class="chip" data-year="2023" role="tab">2023</button>
+        </div>
+        <label class="search" aria-label="Search publications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="search" id="pubSearch" placeholder="Search title, authors…" />
+        </label>
       </div>
-    </div>
+    </section>
 
-    <!-- 2 -->
-    <div class="pub-card">
-      <h4>High School Students’ Performance Analyzer using Machine Learning Approach — IEEE ICCIT 2024</h4>
-      <p><strong>Authors:</strong> Md. Awinul Hoque Utsha, Md. Farnas Utsho, Bushra Jannat, Md. Shojib Talukder</p>
-      <p><strong>Conference:</strong> International Conference on Computer and Information Technology (ICCIT), IEEE, 2024.</p>
-      <div class="pub-links">
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:2osOgNQ5qMEC" target="_blank">Google Scholar</a>
-        <a href="https://www.researchgate.net/publication/392563509_High_School_Students'_Performance_Analyzer_Using_Machine_Learning_Approach?_sg%5B0%5D=bDp9Wf6o7kZuBIsESVcsPuSzTFquVd1fLs_YNNdXPR9y_QsBDquMnXqP_U_Pf_tpcA5vQ6_dfGIZ6C1QHVo8NG3u_mh9eD16MQQRxr8A.ts9o7Hi2S5lgDGnYMvwH0mwxzsO_Vq8AWMpckKv7JLdv9-H5K5s2EVW3NMZb3FrhoYlB8LjisJUyXrcBuEbmYA&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImxvZ2luIiwicGFnZSI6InByb2ZpbGUiLCJwcmV2aW91c1BhZ2UiOiJwcm9maWxlIiwicG9zaXRpb24iOiJwYWdlQ29udGVudCJ9fQ" target="_blank">ResearchGate</a>
-      </div>
-    </div>
+    <section class="section" aria-label="Publication list" id="pubList">
+      <ul class="timeline">
+        <!-- 2023 -->
+        <li class="item" data-year="2023">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Decision Tree using Feature Grouping — IEEE ICCIT 2023</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#60a5fa"></span> ICCIT</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2023</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Neamul Islam Fahim, Md. Awinul Hoque Utsha, Raj Shekhar Karmaker, Md Oli Ullah, Dewan Md. Farid</p>
+            <p class="pub-meta"><strong>Conference:</strong> ICCIT (IEEE), 2023, pp. 1–6.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/378534829_Decision_Tree_using_Feature_Grouping" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib1">Copy BibTeX</button>
+            </div>
+            <textarea id="bib1" class="sr">@inproceedings{fahim2023featuregrouping, title={Decision Tree using Feature Grouping}, booktitle={ICCIT}, year={2023}, author={Fahim, Neamul Islam and Utsha, Md. Awinul Hoque and others}}</textarea>
+          </article>
+        </li>
 
-    <!-- 3 -->
-    <div class="pub-card">
-      <h4>Smart Grid Stability Prediction for Efficient Power Management using Machine Learning — IEEE ICCIT 2024</h4>
-      <p><strong>Authors:</strong> Md. Awinul Hoque Utsha, Rakibul Islam, Ovie Rahaman Sheikh, Nuren Akter, Mohammad Akidul Hoque</p>
-      <p><strong>Conference:</strong> International Conference on Computer and Information Technology (ICCIT), IEEE, 2024.</p>
-      <div class="pub-links">
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:UeHWp8X0CEIC" target="_blank">Google Scholar</a>
-        <a href="https://www.researchgate.net/publication/392564733_Smart_Grid_Stability_Prediction_for_Efficient_Power_Management_using_Machine_Learning?_sg%5B0%5D=bDp9Wf6o7kZuBIsESVcsPuSzTFquVd1fLs_YNNdXPR9y_QsBDquMnXqP_U_Pf_tpcA5vQ6_dfGIZ6C1QHVo8NG3u_mh9eD16MQQRxr8A.ts9o7Hi2S5lgDGnYMvwH0mwxzsO_Vq8AWMpckKv7JLdv9-H5K5s2EVW3NMZb3FrhoYlB8LjisJUyXrcBuEbmYA&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImxvZ2luIiwicGFnZSI6InByb2ZpbGUiLCJwcmV2aW91c1BhZ2UiOiJwcm9maWxlIiwicG9zaXRpb24iOiJwYWdlQ29udGVudCJ9fQ" target="_blank">ResearchGate</a>
-      </div>
-    </div>
+        <!-- 2024 (1) -->
+        <li class="item" data-year="2024">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">High School Students’ Performance Analyzer using Machine Learning — IEEE ICCIT 2024</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#60a5fa"></span> ICCIT</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2024</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Md. Awinul Hoque Utsha, Md. Farnas Utsho, Bushra Jannat, Md. Shojib Talukder</p>
+            <p class="pub-meta"><strong>Conference:</strong> ICCIT (IEEE), 2024.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:2osOgNQ5qMEC" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/392563509_High_School_Students'_Performance_Analyzer_Using_Machine_Learning_Approach" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib2">Copy BibTeX</button>
+            </div>
+            <textarea id="bib2" class="sr">@inproceedings{utsha2024hsperf, title={High School Students’ Performance Analyzer using ML}, booktitle={ICCIT}, year={2024}, author={Utsha, Md. A. H. and others}}</textarea>
+          </article>
+        </li>
 
-    <!-- 4 -->
-    <div class="pub-card">
-      <h4>Correlation-based Feature Extraction to Improve Classification Accuracy — IEEE ICCIT 2024</h4>
-      <p><strong>Authors:</strong> Rakibul Islam, Md. Awinul Hoque Utsha, Md. Mansurul Haque, Ezaz Mahmud Jim, Yeasir Ramim, Md. Mehedi Hasan Hridoy</p>
-      <p><strong>Conference:</strong> International Conference on Computer and Information Technology (ICCIT), IEEE, 2024.</p>
-      <div class="pub-links">
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:qjMakFHDy7sC" target="_blank">Google Scholar</a>
-        <a href="https://www.researchgate.net/publication/392564867_Co-relation-based_Feature_Extraction_to_Improve_Classification_Accuracy?_sg%5B0%5D=bDp9Wf6o7kZuBIsESVcsPuSzTFquVd1fLs_YNNdXPR9y_QsBDquMnXqP_U_Pf_tpcA5vQ6_dfGIZ6C1QHVo8NG3u_mh9eD16MQQRxr8A.ts9o7Hi2S5lgDGnYMvwH0mwxzsO_Vq8AWMpckKv7JLdv9-H5K5s2EVW3NMZb3FrhoYlB8LjisJUyXrcBuEbmYA&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImxvZ2luIiwicGFnZSI6InByb2ZpbGUiLCJwcmV2aW91c1BhZ2UiOiJwcm9maWxlIiwicG9zaXRpb24iOiJwYWdlQ29udGVudCJ9fQ" target="_blank">ResearchGate</a>
-      </div>
-    </div>
+        <!-- 2024 (2) -->
+        <li class="item" data-year="2024">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Smart Grid Stability Prediction for Efficient Power Management using Machine Learning — IEEE ICCIT 2024</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#60a5fa"></span> ICCIT</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2024</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Md. Awinul Hoque Utsha, Rakibul Islam, Ovie Rahaman Sheikh, Nuren Akter, Mohammad Akidul Hoque</p>
+            <p class="pub-meta"><strong>Conference:</strong> ICCIT (IEEE), 2024.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:UeHWp8X0CEIC" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/392564733_Smart_Grid_Stability_Prediction_for_Efficient_Power_Management_using_Machine_Learning" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib3">Copy BibTeX</button>
+            </div>
+            <textarea id="bib3" class="sr">@inproceedings{utsha2024smartgrid, title={Smart Grid Stability Prediction...}, booktitle={ICCIT}, year={2024}, author={Utsha, Md. A. H. and others}}</textarea>
+          </article>
+        </li>
 
-    <!-- 5 -->
-    <div class="pub-card">
-      <h4>Sentiment Analysis for Banglish Text using Machine Learning Approach — IEEE ICCIT 2024</h4>
-      <p><strong>Authors:</strong> Musfique Ahmed, Fardin Hasan Siam, Neamul Islam Fahim, Md. Awinul Hoque Utsha, Md. Mahin Khan, Mohammad Nurul Huda</p>
-      <p><strong>Conference:</strong> International Conference on Computer and Information Technology (ICCIT), IEEE, 2024.</p>
-      <div class="pub-links">
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:IjCSPb-OGe4C" target="_blank">Google Scholar</a>
-        <a href="https://www.researchgate.net/publication/392565040_Sentiment_Analysis_for_Banglish_Text_using_Machine_Learning_Approach?_sg%5B0%5D=bDp9Wf6o7kZuBIsESVcsPuSzTFquVd1fLs_YNNdXPR9y_QsBDquMnXqP_U_Pf_tpcA5vQ6_dfGIZ6C1QHVo8NG3u_mh9eD16MQQRxr8A.ts9o7Hi2S5lgDGnYMvwH0mwxzsO_Vq8AWMpckKv7JLdv9-H5K5s2EVW3NMZb3FrhoYlB8LjisJUyXrcBuEbmYA&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImxvZ2luIiwicGFnZSI6InByb2ZpbGUiLCJwcmV2aW91c1BhZ2UiOiJwcm9maWxlIiwicG9zaXRpb24iOiJwYWdlQ29udGVudCJ9fQ" target="_blank">ResearchGate</a>
-      </div>
-    </div>
+        <!-- 2024 (3) -->
+        <li class="item" data-year="2024">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Correlation-based Feature Extraction to Improve Classification Accuracy — IEEE ICCIT 2024</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#60a5fa"></span> ICCIT</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2024</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Rakibul Islam, Md. Awinul Hoque Utsha, Md. Mansurul Haque, Ezaz Mahmud Jim, Yeasir Ramim, Md. Mehedi Hasan Hridoy</p>
+            <p class="pub-meta"><strong>Conference:</strong> ICCIT (IEEE), 2024.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:qjMakFHDy7sC" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/392564867_Co-relation-based_Feature_Extraction_to_Improve_Classification_Accuracy" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib4">Copy BibTeX</button>
+            </div>
+            <textarea id="bib4" class="sr">@inproceedings{islam2024corrfeat, title={Correlation-based Feature Extraction...}, booktitle={ICCIT}, year={2024}, author={Islam, Rakibul and Utsha, Md. A. H. and others}}</textarea>
+          </article>
+        </li>
 
-    <!-- 6 -->
-    <div class="pub-card">
-      <h4>Towards Safer Aging: A Comprehensive Edge Computing Approach to Unconsciousness and Fall Detection — IEEE ECCE 2025</h4>
-      <p><strong>Authors:</strong> Ezaz Mahmud Jim, Md. Awinul Hoque Utsha, Fabiha Nawal Aurna, Anuradha Choudhury, Mohammad Akidul Hoque</p>
-      <p><strong>Conference:</strong> 4th International Conference on Electrical, Computer and Communication Engineering (ECCE), IEEE, 2025.</p>
-      <div class="pub-links">
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:9yKSN-GCB0IC" target="_blank">Google Scholar</a>
-        <a href="https://www.researchgate.net/publication/392221192_Towards_Safer_Aging_A_Comprehensive_Edge_Computing_Approach_to_Unconsciousness_and_Fall_Detection?_sg%5B0%5D=bDp9Wf6o7kZuBIsESVcsPuSzTFquVd1fLs_YNNdXPR9y_QsBDquMnXqP_U_Pf_tpcA5vQ6_dfGIZ6C1QHVo8NG3u_mh9eD16MQQRxr8A.ts9o7Hi2S5lgDGnYMvwH0mwxzsO_Vq8AWMpckKv7JLdv9-H5K5s2EVW3NMZb3FrhoYlB8LjisJUyXrcBuEbmYA&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImxvZ2luIiwicGFnZSI6InByb2ZpbGUiLCJwcmV2aW91c1BhZ2UiOiJwcm9maWxlIiwicG9zaXRpb24iOiJwYWdlQ29udGVudCJ9fQ" target="_blank">ResearchGate</a>
-      </div>
-    </div>
+        <!-- 2024 (4) -->
+        <li class="item" data-year="2024">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Sentiment Analysis for Banglish Text using Machine Learning Approach — IEEE ICCIT 2024</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#60a5fa"></span> ICCIT</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2024</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Musfique Ahmed, Fardin Hasan Siam, Neamul Islam Fahim, Md. Awinul Hoque Utsha, Md. Mahin Khan, Mohammad Nurul Huda</p>
+            <p class="pub-meta"><strong>Conference:</strong> ICCIT (IEEE), 2024.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:IjCSPb-OGe4C" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/392565040_Sentiment_Analysis_for_Banglish_Text_using_Machine_Learning_Approach" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib5">Copy BibTeX</button>
+            </div>
+            <textarea id="bib5" class="sr">@inproceedings{ahmed2024banglish, title={Sentiment Analysis for Banglish Text...}, booktitle={ICCIT}, year={2024}, author={Ahmed, Musfique and Utsha, Md. A. H. and others}}</textarea>
+          </article>
+        </li>
 
-    <!-- 7 -->
-    <div class="pub-card">
-      <h4>Comparative Analysis between Monolithic and Microservices Architecture Based on Web Streaming Applications — IEEE ECCE 2025</h4>
-      <p><strong>Authors:</strong> Jurayak Kader, Md Abu Rayhan Abir, S.M. Tarikil Islam, Md. Awinul Hoque Utsha, Nowsad Islam Shuvo, Ezaz Mahmud Jim, Salekul Islam</p>
-      <p><strong>Conference:</strong> 4th International Conference on Electrical, Computer and Communication Engineering (ECCE), IEEE, 2025.</p>
-      <div class="pub-links">
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:d1gkVwhDpl0C" target="_blank">Google Scholar</a>
-        <a href="https://www.researchgate.net/publication/392224139_Comparative_Analysis_between_Monolithic_and_Microservice_Architecture_Based_on_Web_Streaming_Applications?_sg%5B0%5D=bDp9Wf6o7kZuBIsESVcsPuSzTFquVd1fLs_YNNdXPR9y_QsBDquMnXqP_U_Pf_tpcA5vQ6_dfGIZ6C1QHVo8NG3u_mh9eD16MQQRxr8A.ts9o7Hi2S5lgDGnYMvwH0mwxzsO_Vq8AWMpckKv7JLdv9-H5K5s2EVW3NMZb3FrhoYlB8LjisJUyXrcBuEbmYA&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImxvZ2luIiwicGFnZSI6InByb2ZpbGUiLCJwcmV2aW91c1BhZ2UiOiJwcm9maWxlIiwicG9zaXRpb24iOiJwYWdlQ29udGVudCJ9fQ" target="_blank">ResearchGate</a>
-      </div>
-    </div>
-  </section>
+        <!-- 2025 (1) -->
+        <li class="item" data-year="2025">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Towards Safer Aging: A Comprehensive Edge Computing Approach to Unconsciousness and Fall Detection — IEEE ECCE 2025</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#34d399"></span> ECCE</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2025</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Ezaz Mahmud Jim, Md. Awinul Hoque Utsha, Fabiha Nawal Aurna, Anuradha Choudhury, Mohammad Akidul Hoque</p>
+            <p class="pub-meta"><strong>Conference:</strong> ECCE (IEEE), 2025.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/392221192_Towards_Safer_Aging_A_Comprehensive_Edge_Computing_Approach_to_Unconsciousness_and_Fall_Detection" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib6">Copy BibTeX</button>
+            </div>
+            <textarea id="bib6" class="sr">@inproceedings{jim2025saferaging, title={Towards Safer Aging...}, booktitle={ECCE}, year={2025}, author={Jim, Ezaz Mahmud and Utsha, Md. A. H. and others}}</textarea>
+          </article>
+        </li>
 
-  <footer>
-    © <span id="year"></span> Md. Awinul Hoque Utsha
-  </footer>
+        <!-- 2025 (2) -->
+        <li class="item" data-year="2025">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Comparative Analysis between Monolithic and Microservices Architecture Based on Web Streaming Applications — IEEE ECCE 2025</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#34d399"></span> ECCE</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2025</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Jurayak Kader, Md Abu Rayhan Abir, S.M. Tarikil Islam, Md. Awinul Hoque Utsha, Nowsad Islam Shuvo, Ezaz Mahmud Jim, Salekul Islam</p>
+            <p class="pub-meta"><strong>Conference:</strong> ECCE (IEEE), 2025.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:d1gkVwhDpl0C" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/392224139_Comparative_Analysis_between_Monolithic_and_Microservice_Architecture_Based_on_Web_Streaming_Applications" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib7">Copy BibTeX</button>
+            </div>
+            <textarea id="bib7" class="sr">@inproceedings{kader2025microservices, title={Comparative Analysis between Monolithic and Microservices Architecture...}, booktitle={ECCE}, year={2025}, author={Kader, Jurayak and Utsha, Md. A. H. and others}}</textarea>
+          </article>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> Md. Awinul Hoque Utsha</footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Filter + Search
+    const chips = document.querySelectorAll('.chip');
+    const items = Array.from(document.querySelectorAll('.item'));
+    const search = document.getElementById('pubSearch');
+    function apply(){
+      const active = document.querySelector('.chip.active')?.dataset.year || 'all';
+      const q = (search.value||'').toLowerCase().trim();
+      items.forEach(it=>{
+        const yearOk = active==='all' || it.dataset.year===active;
+        const text = it.textContent.toLowerCase();
+        const qOk = !q || text.includes(q);
+        it.style.display = (yearOk && qOk) ? '' : 'none';
+      });
+    }
+    chips.forEach(ch=>ch.addEventListener('click',()=>{ chips.forEach(c=>c.classList.remove('active')); ch.classList.add('active'); apply(); }));
+    search.addEventListener('input', apply);
+
+    // Copy BibTeX
+    document.querySelectorAll('.copy-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id = btn.dataset.bibtex;
+        const el = document.querySelector(id);
+        if(!el) return;
+        navigator.clipboard.writeText(el.value || '').then(()=>{
+          const old = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(()=> btn.textContent = old, 1200);
+        });
+      });
+    });
   </script>
 </body>
 </html>

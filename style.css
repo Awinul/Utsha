@@ -139,13 +139,21 @@ nav a:hover {
 .fill{height:100%; background:linear-gradient(90deg,#63a4ff,#8ec5ff)}
 
 /* === Projects === */
-.grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); justify-items:center;}
-.card{
-  padding:18px; border-radius:14px;
-  background:rgba(255,255,255,.07); border:1px solid var(--border);
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
-  transition:transform .25s ease, box-shadow .25s ease;
+.grid{display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); justify-items:center;}
+.card {
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  /* ✅ Added lines */
+  width: 100%;
+  max-width: 400px;     /* prevent it from being too wide */
+  margin: 0 auto;       /* centers it on smaller screens */
 }
+
 .card:hover{transform:translateY(-4px); box-shadow:0 16px 34px rgba(0,0,0,.35)}
 
 .list{padding-left:0; list-style-position:inside; text-align:center;}
@@ -293,4 +301,16 @@ footer{text-align:center; color:var(--muted); padding:26px 12px; margin-top:14px
   background: linear-gradient(135deg, #2563eb, #60a5fa);
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+}
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+    padding: 14px;
+  }
+}
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
 }

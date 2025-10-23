@@ -2,411 +2,321 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Utsha | Hobbies</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root{
+      --ink:#111827; --ink-sub:#334155; --brand:#1d4ed8; --brand-strong:#2563eb;
+      --card: rgba(255,255,255,.85); --card-border: rgba(0,0,0,.06); --shadow: 0 10px 28px rgba(0,0,0,.08);
+      --radius: 16px;
+    }
 
-
-/* ===== Dynamic Cosmic Background Animation ===== */
-/* Dynamic bright cosmic background */
-body {
-  background: linear-gradient(120deg,
-              #e0f2fe,   /* sky blue */
-              #e9d5ff,   /* lavender */
-              #ffe4e6,   /* soft pink */
-              #fde68a,   /* pale yellow */
-              #bbf7d0);  /* mint green */
-  background-size: 600% 600%;
-  animation: cosmicShift 18s ease-in-out infinite;
-  color: #111827;
-  transition: background 0.5s ease;
-}
-
-@keyframes cosmicShift {
-  0%   { background-position: 0% 50%; }
-  25%  { background-position: 50% 50%; }
-  50%  { background-position: 100% 50%; }
-  75%  { background-position: 50% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes cosmicShift {
-  0%   { background-position: 0% 50%; }
-  25%  { background-position: 50% 50%; }
-  50%  { background-position: 100% 50%; }
-  75%  { background-position: 50% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-    /* === Bright (non-dark) cosmic background for this page === */
+    html{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;}
     body{
-      background: radial-gradient(circle at 20% 20%, #e0f2fe 0%, #e9d5ff 40%, #ffe4e6 75%);
-      background-attachment: fixed;
-      color:#111827;
+      margin:0; color:var(--ink);
+      background: linear-gradient(120deg,#e0f2fe,#e9d5ff,#ffe4e6,#fde68a,#bbf7d0);
+      background-size:600% 600%;
+      animation: cosmicShift 18s ease-in-out infinite;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
-    /* Hide the dark cosmic layers from the base site on this page */
-    .sky, .aurora, #space { display:none; }
+    @keyframes cosmicShift{ 0%{background-position:0% 50%}25%{background-position:50% 50%}50%{background-position:100% 50%}75%{background-position:50% 50%}100%{background-position:0% 50%}}
+    @media (prefers-reduced-motion: reduce){ body{ animation: none; } }
 
-    /* Header + cards keep a light glass look */
-    header{
-      background: rgba(255,255,255,0.65);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    }
-    nav a{ color:#111827; }
-    nav a:hover, nav a.active{ color:#2563eb; text-shadow:0 0 8px rgba(37,99,235,.25); }
+    .wrap{ max-width:1100px; margin:0 auto; padding:16px; }
+    @media (min-width:640px){ .wrap{ padding:20px; } }
+    @media (min-width:1024px){ .wrap{ padding:26px 18px; } }
 
-    .section{
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 18px;
-      box-shadow: 0 10px 28px rgba(0,0,0,.08);
-      color:#111827;
-    }
-    .section h3{
-      color:#1d4ed8;
-      text-shadow: 0 0 6px rgba(147,197,253,.35);
-      font-size:26px;
-      margin-top:0;
+    /* Header / Nav */
+    header{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.7); backdrop-filter: blur(10px); border-bottom:1px solid var(--card-border); }
+    .navbar{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .brand{ margin:0; font-size:1.25rem; font-weight:700; letter-spacing:.2px; }
+
+    /* Mobile nav */
+    .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:10px; border:1px solid var(--card-border); background:#fff; box-shadow: 0 4px 12px rgba(0,0,0,.06); cursor:pointer; }
+    .nav-toggle:focus{ outline:2px solid var(--brand-strong); outline-offset:2px; }
+    .nav-links{ display:none; flex-direction:column; gap:8px; padding:12px; margin:10px 0 0; background:var(--card); border:1px solid var(--card-border); border-radius:12px; box-shadow:var(--shadow); }
+    .nav-links a{ text-decoration:none; color:#1e3a8a; font-weight:600; padding:10px 12px; border-radius:10px; }
+    .nav-links a:hover, .nav-links a:focus, .nav-links a.active{ color:var(--brand-strong); background:rgba(37,99,235,.08); }
+    .nav-open .nav-links{ display:flex; }
+
+    /* Desktop nav */
+    @media (min-width:768px){
+      .nav-toggle{ display:none; }
+      .nav-links{ display:flex; flex-direction:row; align-items:center; gap:16px; background:transparent; border:none; box-shadow:none; padding:0; margin:0; }
+      .nav-links a{ padding:8px 10px; }
     }
 
-    /* Interests pills */
-    .pills{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:12px 0 6px; }
-    .pill{
-      padding:8px 14px; border-radius:999px;
-      background:linear-gradient(135deg,#dbeafe,#fde68a);
-      border:1px solid rgba(0,0,0,.06);
-      box-shadow:0 6px 14px rgba(59,130,246,.18);
-      font-weight:600; color:#1f2937;
-    }
+    /* Sections */
+    .section{ background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); margin:16px; }
+    .section h3{ margin:0 0 10px; color:var(--brand); font-size:1.25rem; text-align:center; }
+    .section p{ margin:0; color:var(--ink); line-height:1.7; }
+    @media (min-width:640px){ .section{ padding:20px; margin:16px 0; } }
+
+    /* Pills */
+    .pills{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:12px 0 4px; }
+    .pill{ display:inline-block; padding:8px 14px; border-radius:999px; background:linear-gradient(135deg,#dbeafe,#fde68a); border:1px solid var(--card-border); box-shadow:0 6px 14px rgba(59,130,246,.18); font-weight:600; color:#1f2937; text-decoration:none; }
 
     /* Tour cards */
-    .tour{
-      margin:28px auto; max-width:1050px; text-align:left;
-      background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(241,245,249,.85));
-      border:1px solid rgba(0,0,0,.08);
-      border-radius:16px; padding:18px 18px 14px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.12);
-    }
-    .tour h4{ margin:4px 0 10px; font-size:20px; color:#0f172a; }
-    .tour .meta{ color:#475569; margin-top:-6px; margin-bottom:12px; }
+    .tour{ margin:18px auto; max-width:1050px; background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(241,245,249,.85)); border:1px solid rgba(0,0,0,.08); border-radius:16px; padding:16px; box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+    .tour h4{ margin:2px 0 8px; font-size:1.125rem; color:#0f172a; }
+    .tour .meta{ color:#475569; margin-top:-2px; margin-bottom:12px; font-size:.95rem; }
 
-    /* Gallery: show FULL images (no cropping), responsive grid */
-    .gallery{
-      display:grid;
-      gap:16px;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-    .gallery figure{
-      margin:0; border-radius:12px; overflow:hidden;
-      border:1px solid rgba(0,0,0,.06); background:#fff;
-      box-shadow:0 4px 16px rgba(0,0,0,.1);
-      cursor:zoom-in;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
+    /* Gallery grid */
+    .gallery{ display:grid; gap:10px; grid-template-columns: repeat(2, 1fr); }
+    @media (min-width:640px){ .gallery{ gap:12px; grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width:1024px){ .gallery{ gap:14px; grid-template-columns: repeat(4, 1fr); } }
+
+    .gallery figure{ margin:0; border-radius:12px; overflow:hidden; border:1px solid var(--card-border); background:#fff; box-shadow:0 4px 16px rgba(0,0,0,.1); cursor:zoom-in; transition: transform .2s ease, box-shadow .2s ease; }
     .gallery figure:hover{ transform: scale(1.02); box-shadow:0 10px 30px rgba(0,0,0,.2); }
-    .gallery img{
-      width:100%;
-      height:auto;          /* show full image height */
-      object-fit: contain;  /* preserve entire image */
-      display:block;
-    }
-    .gallery figcaption{ padding:8px 10px; font-size:13px; color:#334155; background:#fff; }
+    .gallery img{ width:100%; height:auto; object-fit:contain; display:block; }
+    .gallery figcaption{ padding:8px 10px; font-size:.82rem; color:var(--ink-sub); background:#fff; }
 
     /* Lightbox */
-    .lightbox{
-      position:fixed; inset:0; display:none;
-      align-items:center; justify-content:center;
-      background: rgba(0,0,0,0.75);
-      z-index: 999;
-    }
+    .lightbox{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background: rgba(0,0,0,0.8); z-index: 999; padding:16px; }
     .lightbox.open{ display:flex; }
-    .lightbox-content{ position:relative; max-width:95%; max-height:90%; }
-    .lightbox img{
-      display:block; max-width:100%; max-height:90vh;
-      border-radius:10px; box-shadow:0 10px 40px rgba(0,0,0,0.4);
-      background:#000;
-    }
-    .lightbox .close{
-      position:absolute; top:10px; right:10px;
-      background: rgba(255,255,255,0.95);
-      border:none; border-radius: 50%;
-      font-size:20px; padding:4px 10px; cursor:pointer;
-      box-shadow:0 4px 10px rgba(0,0,0,.25);
-    }
+    .lightbox-content{ position:relative; width:100%; max-width:min(1024px,96vw); }
+    .lightbox img{ display:block; width:100%; height:auto; max-height:82vh; border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,.4); background:#000; }
+    .close{ position:absolute; top:-10px; right:-10px; background: rgba(255,255,255,0.98); border:none; border-radius: 999px; width:40px; height:40px; font-size:22px; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,.25); display:grid; place-items:center; }
+    .close:focus{ outline:2px solid var(--brand-strong); outline-offset:2px; }
 
-    footer{ color:#334155; }
+    footer{ text-align:center; color:var(--ink-sub); padding:22px; font-size:.95rem; }
+
+    /* Hide heavy base-site layers on this page if present */
+    .sky,.aurora,#space{ display:none; }
   </style>
 </head>
 <body>
   <header>
-    <nav>
+    <div class="wrap navbar" role="navigation" aria-label="Primary">
       <h1 class="brand">Utsha</h1>
-      <ul>
-       <li><a href="index.html#about">Home</a></li>
-  <li><a href="index.html#skills">Skills</a></li>
-  <li><a href="index.html#projects">Projects</a></li>
-  <li><a href="index.html#publications">Publications</a></li>
-  <li><a href="index.html#cv">CV</a></li>
-  <li><a href="activities.html">Activities</a></li>
-  <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="#111827" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <nav id="navMenu" class="nav-links">
+        <a href="index.html#about">Home</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="index.html#cv">CV</a>
+        <a href="activities.html">Activities</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="section">
-    <h3>Hobbies</h3>
-    <div class="pills">
-      <a href="#travelling" class="pill">Travelling</a>
-
-
-
-
-      <a href="#anime" class="pill">Watching Anime</a>
-
-      <span class="pill">Playing PUBG</span>
-    </div>
-  </section>
-
-  <section class="section" id="travelling">
-
-
-  <section class="section">
-    <h3>My Tours</h3>
-
-    <!-- 2020: Cox's Bazar & Saint Martin -->
-    <article class="tour">
-  <h4>Cox’s Bazar & Saint Martin Tour</h4>
-  <div class="meta">Year: 2022</div>
-  <div class="gallery">
-   
-      <img src="Saint2.jpg" alt="Beach cycling silhouette, 2022" loading="lazy">
-    </figure>
-    <figure>
-      <img src="Saint3.jpg" alt="Friends on bike, 2022" loading="lazy">
-    </figure>
-    <figure>
-      <img src="cox 22.jpg" alt="Sea jump, 2022" loading="lazy">
-    </figure>
-     <figure>
-      <img src="Saint1.jpg" alt="Cox’s Bazar portrait, 2022" loading="lazy">
-    </figure>
- 
-         <figure>
-      <img src="saint 5.jpg" alt="Cox’s Bazar portrait, 2022" loading="lazy">
-    </figure>
-
-      <figure>
-      <img src="Saint4.jpg" alt="Cox’s Bazar portrait, 2022" loading="lazy">
-    </figure>
-  </div>
-</article>
-
-
-    <!-- 2021: Sajek -->
-    <article class="tour">
-      <h4>Sajek Tour</h4>
-      <div class="meta">Year: 2021</div>
-      <div class="gallery">
-        <figure>
-          <img src="Saj1.jpg" alt="Sajek valley clouds, 2021" loading="lazy">
-          <figcaption>Sajek — clouds over hills</figcaption>
-        </figure>
-        <figure>
-          <img src="saj 2.jpg" alt="Sajek sunrise, 2021" loading="lazy">
-        </figure>
-        <figure>
-          <img src="saj3.jpg" alt="Sajek sunrise, 2021" loading="lazy">
-        </figure>
-        <figure>
-          <img src="saj4.jpg" alt="Sajek sunrise, 2021" loading="lazy">
-        </figure>
-        <figure>
-          <img src="saj5.jpg" alt="Sajek sunrise, 2021" loading="lazy">
-        </figure>
-        <figure>
-          <img src="saj6.jpg" alt="Sajek sunrise, 2021" loading="lazy">
-        </figure>
+  <main class="wrap" id="main">
+    <section class="section">
+      <h3>Hobbies</h3>
+      <div class="pills">
+        <a href="#travelling" class="pill">Travelling</a>
+        <a href="#anime" class="pill">Watching Anime</a>
+        <span class="pill" title="Games I play sometimes">Playing PUBG</span>
       </div>
-    </article>
+    </section>
 
-    <!-- 2024: Cox's Bazar -->
-    <article class="tour">
-      <h4>Cox’s Bazar Tour</h4>
-      <div class="meta">Year: 2023</div>
-      <div class="gallery">
-        <figure>
-          <img src="23cox1.jpg" alt="Cox’s Bazar 2024" loading="lazy">
-        </figure>
-        <figure>
-          <img src="23cox2.jpg" alt="Cox’s Bazar 2024" loading="lazy">
-        </figure>
-        <figure>
-          <img src="23cox3.jpg" alt="Cox’s Bazar 2024" loading="lazy">
-        </figure>
-        <figure>
-          <img src="23cox4.jpg" alt="Cox’s Bazar 2024" loading="lazy">
-        </figure>
-        <figure>
-          <img src="23cox5.jpg" alt="Cox’s Bazar 2024" loading="lazy">
-        </figure>
-        <figure>
-          <img src="23cox6.jpg" alt="Cox’s Bazar 2024" loading="lazy">
-        </figure>
-      </div>
-    </article>
+    <section class="section" id="travelling" aria-labelledby="tour-title">
+      <h3 id="tour-title">My Tours</h3>
 
-    <!-- 2025: Cox's Bazar -->
-    <article class="tour">
-      <h4>Cox’s Bazar Tour</h4>
-      <div class="meta">Year: 2024</div>
-      <div class="gallery">
-        <figure>
-          <img src="24cox1.jpg" alt="Cox’s Bazar 2025" loading="lazy">
-        </figure>
-        <figure>
-          <img src="24cox2.jpg" alt="Cox’s Bazar 2025" loading="lazy">
-        </figure>
-        <figure>
-          <img src="24cox3.jpg" alt="Cox’s Bazar 2025" loading="lazy">
-        </figure>
-        <figure>
-          <img src="24cox4.jpg" alt="Cox’s Bazar 2025" loading="lazy">
-        </figure>
-        <figure>
-          <img src="24cox5.jpg" alt="Cox’s Bazar 2025" loading="lazy">
-        </figure>
-        <figure>
-          <img src="24cox6.jpg" alt="Cox’s Bazar 2025" loading="lazy">
-        </figure>
-      </div>
-    </article>
-
-    <!-- 2024: Mirinja Valley -->
-    <article class="tour">
-      <h4>Mirinja Valley Tour</h4>
-      <div class="meta">Year: 2024</div>
-      <div class="gallery">
-        <figure>
-          <img src="miri1.jpg" alt="Mirinja Valley viewpoint, 2024" loading="lazy">
-        </figure>
+      <!-- 2022: Cox's Bazar & Saint Martin -->
+      <article class="tour">
+        <h4>Cox’s Bazar & Saint Martin Tour</h4>
+        <div class="meta">Year: 2022</div>
+        <div class="gallery">
           <figure>
-          <img src="miri6.jpg" alt="Mirinja Valley trail, 2024" loading="lazy">
+            <img src="Saint2.jpg" alt="Beach cycling silhouette, 2022" loading="lazy" width="640" height="420">
+          </figure>
+          <figure>
+            <img src="Saint3.jpg" alt="Friends on bike, 2022" loading="lazy" width="640" height="420">
+          </figure>
+          <figure>
+            <img src="cox 22.jpg" alt="Sea jump, 2022" loading="lazy" width="640" height="420">
+          </figure>
+          <figure>
+            <img src="Saint1.jpg" alt="Portrait at Cox’s Bazar, 2022" loading="lazy" width="640" height="420">
+          </figure>
+          <figure>
+            <img src="saint 5.jpg" alt="Saint Martin memory, 2022" loading="lazy" width="640" height="420">
+          </figure>
+          <figure>
+            <img src="Saint4.jpg" alt="Seaside candid, 2022" loading="lazy" width="640" height="420">
+          </figure>
+        </div>
+      </article>
+
+      <!-- 2021: Sajek -->
+      <article class="tour">
+        <h4>Sajek Tour</h4>
+        <div class="meta">Year: 2021</div>
+        <div class="gallery">
+          <figure>
+            <img src="Saj1.jpg" alt="Sajek valley clouds, 2021" loading="lazy" width="640" height="420">
+            <figcaption>Sajek — clouds over hills</figcaption>
+          </figure>
+          <figure>
+            <img src="saj 2.jpg" alt="Sajek sunrise, 2021" loading="lazy" width="640" height="420">
+          </figure>
+          <figure>
+            <img src="saj3.jpg" alt="Sajek sunrise, 2021" loading="lazy" width="640" height="420">
+          </figure>
+          <figure>
+            <img src="saj4.jpg" alt="Sajek trail, 2021" loading="lazy" width="640" height="420">
+          </figure>
+          <figure>
+            <img src="saj5.jpg" alt="Hilltop view, 2021" loading="lazy" width="640" height="420">
+          </figure>
+          <figure>
+            <img src="saj6.jpg" alt="Green valley, 2021" loading="lazy" width="640" height="420">
+          </figure>
+        </div>
+      </article>
+
+      <!-- 2023: Cox's Bazar -->
+      <article class="tour">
+        <h4>Cox’s Bazar Tour</h4>
+        <div class="meta">Year: 2023</div>
+        <div class="gallery">
+          <figure><img src="23cox1.jpg" alt="Cox’s Bazar 2023" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="23cox2.jpg" alt="Cox’s Bazar 2023" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="23cox3.jpg" alt="Cox’s Bazar 2023" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="23cox4.jpg" alt="Cox’s Bazar 2023" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="23cox5.jpg" alt="Cox’s Bazar 2023" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="23cox6.jpg" alt="Cox’s Bazar 2023" loading="lazy" width="640" height="420"></figure>
+        </div>
+      </article>
+
+      <!-- 2024: Cox's Bazar -->
+      <article class="tour">
+        <h4>Cox’s Bazar Tour</h4>
+        <div class="meta">Year: 2024</div>
+        <div class="gallery">
+          <figure><img src="24cox1.jpg" alt="Cox’s Bazar 2024" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="24cox2.jpg" alt="Cox’s Bazar 2024" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="24cox3.jpg" alt="Cox’s Bazar 2024" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="24cox4.jpg" alt="Cox’s Bazar 2024" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="24cox5.jpg" alt="Cox’s Bazar 2024" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="24cox6.jpg" alt="Cox’s Bazar 2024" loading="lazy" width="640" height="420"></figure>
+        </div>
+      </article>
+
+      <!-- 2024: Mirinja Valley -->
+      <article class="tour">
+        <h4>Mirinja Valley Tour</h4>
+        <div class="meta">Year: 2024</div>
+        <div class="gallery">
+          <figure><img src="miri1.jpg" alt="Mirinja Valley viewpoint, 2024" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="miri6.jpg" alt="Mirinja Valley trail, 2024" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="miri2.jpg" alt="Mirinja Valley trail, 2024" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="miri3.jpg" alt="Mirinja Valley trail, 2024" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="miri 4.jpg" alt="Mirinja Valley lookout, 2024" loading="lazy" width="640" height="420"></figure>
+          <figure><img src="miri5.jpg" alt="Forest path in Mirinja, 2024" loading="lazy" width="640" height="420"></figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- Watching Anime Section -->
+    <article class="tour" id="anime">
+      <h4>Watching Anime</h4>
+      <div class="meta">My Favorite Anime</div>
+      <p>Anime inspires me through deep storytelling, emotions, and creativity. I especially enjoy adventure, fantasy, and human-connection genres. Here are some of my all-time favorites.</p>
+      <div class="gallery">
+        <figure>
+          <a href="https://en.wikipedia.org/wiki/Attack_on_Titan" target="_blank" rel="noopener noreferrer">
+            <img src="attackon.jpg" alt="Attack on Titan poster" loading="lazy" width="640" height="420">
+          </a>
+          <figcaption><strong>Attack on Titan</strong><br>Epic story of humanity’s survival.</figcaption>
         </figure>
         <figure>
-          <img src="miri2.jpg" alt="Mirinja Valley trail, 2024" loading="lazy">
+          <a href="https://en.wikipedia.org/wiki/One_Piece" target="_blank" rel="noopener noreferrer">
+            <img src="onepiece.jpg" alt="One Piece poster" loading="lazy" width="640" height="420">
+          </a>
+          <figcaption><strong>One Piece</strong><br>A grand sea adventure with friendship and dreams.</figcaption>
         </figure>
         <figure>
-          <img src="miri3.jpg" alt="Mirinja Valley trail, 2024" loading="lazy">
+          <a href="https://en.wikipedia.org/wiki/Naruto" target="_blank" rel="noopener noreferrer">
+            <img src="naruto.jpg" alt="Naruto poster" loading="lazy" width="640" height="420">
+          </a>
+          <figcaption><strong>Naruto</strong><br>A tale of determination, friendship, and purpose.</figcaption>
         </figure>
         <figure>
-          <img src="miri 4.jpg" alt="Mirinja Valley trail, 2024" loading="lazy">
+          <a href="https://en.wikipedia.org/wiki/Dororo" target="_blank" rel="noopener noreferrer">
+            <img src="dororo.jpg" alt="Dororo poster" loading="lazy" width="640" height="420">
+          </a>
+          <figcaption><strong>Dororo</strong><br>A dark historical tale of a boy born without body parts who hunts demons to reclaim his humanity.</figcaption>
         </figure>
         <figure>
-          <img src="miri5.jpg" alt="Mirinja Valley trail, 2024" loading="lazy">
+          <a href="https://en.wikipedia.org/wiki/Demon_Slayer:_Kimetsu_no_Yaiba" target="_blank" rel="noopener noreferrer">
+            <img src="demon.jpg" alt="Demon Slayer poster" loading="lazy" width="640" height="420">
+          </a>
+          <figcaption><strong>Demon Slayer</strong><br>Visually stunning and emotionally powerful.</figcaption>
         </figure>
-       
+        <figure>
+          <a href="https://en.wikipedia.org/wiki/Bleach_(TV_series)" target="_blank" rel="noopener noreferrer">
+            <img src="bleach.jpg" alt="Bleach poster" loading="lazy" width="640" height="420">
+          </a>
+          <figcaption><strong>Bleach</strong><br>Ichigo becomes a Soul Reaper—action packed spiritual battles.</figcaption>
+        </figure>
       </div>
     </article>
-  </section>
-    <!-- Watching Anime Section -->
-<article class="tour" id="anime">
-  <h4>Watching Anime</h4>
-  <div class="meta">My Favorite Anime</div>
-  <p>
-    Anime inspires me through deep storytelling, emotions, and creativity. 
-    I especially enjoy adventure, fantasy, and human-connection genres. 
-    Here are some of my all-time favorites.
-  </p>
+  </main>
 
-  <div class="gallery">
-  <figure>
-    <a href="https://en.wikipedia.org/wiki/Attack_on_Titan" target="_blank">
-      <img src="attackon.jpg" alt="Attack on Titan poster" loading="lazy">
-    </a>
-    <figcaption><strong>Attack on Titan</strong><br>Epic story of humanity’s survival.</figcaption>
-  </figure>
+  <footer>© <span id="year"></span> Md. Awinul Hoque Utsha</footer>
 
-  <figure>
-    <a href="https://en.wikipedia.org/wiki/One_Piece" target="_blank">
-      <img src="onepiece.jpg" alt="One Piece poster" loading="lazy">
-    </a>
-    <figcaption><strong>One Piece</strong><br>A grand sea adventure with friendship and dreams.</figcaption>
-  </figure>
-
-  <figure>
-    <a href="https://en.wikipedia.org/wiki/Naruto" target="_blank">
-      <img src="naruto.jpg" alt="Naruto poster" loading="lazy">
-    </a>
-    <figcaption><strong>Naruto</strong><br>A tale of determination, friendship, and purpose.</figcaption>
-  </figure>
-
-  <figure>
-    <a href="https://en.wikipedia.org/wiki/Dororo" target="_blank">
-      <img src="dororo.jpg" alt="Dororo poster" loading="lazy">
-    </a>
-    <figcaption>
-      <strong>Dororo</strong><br>
-      A dark historical tale of a boy born without body parts who hunts demons to reclaim his humanity. 
-      Deeply emotional and visually stunning.
-    </figcaption>
-  </figure>
-
-  <figure>
-    <a href="https://en.wikipedia.org/wiki/Demon_Slayer:_Kimetsu_no_Yaiba" target="_blank">
-      <img src="demon.jpg" alt="Demon Slayer poster" loading="lazy">
-    </a>
-    <figcaption><strong>Demon Slayer</strong><br>Visually stunning and emotionally powerful.</figcaption>
-  </figure>
-
-  <figure>
-    <a href="https://en.wikipedia.org/wiki/Bleach_(TV_series)" target="_blank">
-      <img src="bleach.jpg" alt="Bleach poster" loading="lazy">
-    </a>
-    <figcaption>
-      <strong>Bleach</strong><br>
-      A legendary shonen series following Ichigo Kurosaki, a teenager who becomes a Soul Reaper to protect the living and the dead. 
-      Full of action and spiritual battles.
-    </figcaption>
-  </figure>
-</div>
-
-
-  </section>
-
-  <footer>
-    © <span id="year"></span> Md. Awinul Hoque Utsha
-  </footer>
-
-  <!-- Lightbox (no external libraries) -->
-  <div class="lightbox" id="lightbox">
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
     <div class="lightbox-content">
-      <button class="close" id="lb-close">×</button>
-      <img id="lb-img" src="" alt="">
+      <button class="close" id="lb-close" aria-label="Close">×</button>
+      <img id="lb-img" src="" alt="Expanded gallery image" />
     </div>
   </div>
 
   <script>
     // Footer year
-    (document.getElementById("year")||{}).textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Lightbox open/close
-    const lightbox = document.getElementById('lightbox');
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    const header = document.querySelector('header');
+    navToggle.addEventListener('click', () => {
+      const open = header.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      header.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded','false');
+    }));
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lb-img');
     const lbClose = document.getElementById('lb-close');
 
+    function openLightbox(src, alt){
+      lbImg.src = src; lbImg.alt = alt || '';
+      lb.classList.add('open');
+      lb.removeAttribute('hidden');
+      lbClose.focus();
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lb.classList.remove('open');
+      lb.setAttribute('hidden','');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
+
     document.querySelectorAll('.gallery img').forEach(img=>{
-      img.addEventListener('click', ()=>{
-        lbImg.src = img.src;
-        lbImg.alt = img.alt || '';
-        lightbox.classList.add('open');
-      });
+      img.addEventListener('click', ()=> openLightbox(img.src, img.alt));
+      img.addEventListener('keydown', (e)=>{ if(e.key==='Enter') openLightbox(img.src, img.alt); });
+      img.setAttribute('tabindex','0');
     });
-    lbClose.addEventListener('click', ()=> lightbox.classList.remove('open'));
-    lightbox.addEventListener('click', e=> { if(e.target === lightbox) lightbox.classList.remove('open'); });
-    document.addEventListener('keydown', e=>{ if(e.key==='Escape') lightbox.classList.remove('open'); });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lb.addEventListener('click', e=>{ if(e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLightbox(); });
   </script>
 </body>
 </html>
