@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>IEEE UIU Student Branch | Utsha</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,37 +31,79 @@
     @media (min-width:1024px){ .wrap{ padding:26px 18px; } }
 
     /* Header / Nav */
-    header{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.7); backdrop-filter: blur(10px); border-bottom:1px solid var(--card-border); }
+    header{
+      position:sticky; top:0; z-index:1000;
+      background:rgba(255,255,255,.7);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--card-border);
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+    }
     .navbar{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
     .brand{ margin:0; font-size:1.25rem; font-weight:700; letter-spacing:.2px; }
 
     /* Mobile nav */
-    .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:10px; border:1px solid var(--card-border); background:#fff; box-shadow: 0 4px 12px rgba(0,0,0,.06); cursor:pointer; }
+    .nav-toggle{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:42px; height:42px; border-radius:10px;
+      border:1px solid var(--card-border); background:#fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,.06); cursor:pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
     .nav-toggle:focus{ outline:2px solid var(--brand-strong); outline-offset:2px; }
-    .nav-links{ display:none; flex-direction:column; gap:8px; padding:12px; margin:10px 0 0; background:var(--card); border:1px solid var(--card-border); border-radius:12px; box-shadow:var(--shadow); }
-    .nav-links a{ text-decoration:none; color:#1e3a8a; font-weight:600; padding:10px 12px; border-radius:10px; }
-    .nav-links a:hover, .nav-links a:focus, .nav-links a.active{ color:var(--brand-strong); background:rgba(37,99,235,.08); }
+    .nav-links{
+      display:none; flex-direction:column; gap:8px; padding:12px; margin:10px 0 0;
+      background:var(--card); border:1px solid var(--card-border); border-radius:12px; box-shadow:var(--shadow);
+      width:100%;
+    }
+    .nav-links a{
+      text-decoration:none; color:#1e3a8a; font-weight:600; padding:10px 12px; border-radius:10px;
+    }
+    .nav-links a:hover, .nav-links a:focus, .nav-links a.active{
+      color:var(--brand-strong); background:rgba(37,99,235,.08);
+    }
     .nav-open .nav-links{ display:flex; }
+    body.menu-lock{ overflow:hidden; } /* prevent bg scroll when menu open */
 
     /* Desktop nav */
     @media (min-width:768px){
       .nav-toggle{ display:none; }
-      .nav-links{ display:flex; flex-direction:row; align-items:center; gap:16px; background:transparent; border:none; box-shadow:none; padding:0; margin:0; }
+      .nav-links{
+        display:flex; flex-direction:row; align-items:center; gap:16px;
+        background:transparent; border:none; box-shadow:none; padding:0; margin:0;
+        width:auto;
+      }
       .nav-links a{ padding:8px 10px; }
     }
 
     /* Hero */
-    .ieee-hero{ display:grid; grid-template-columns:1fr; gap:14px; background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); }
-    .ieee-logo{ width:110px; height:110px; border-radius:12px; object-fit:cover; background:#fff; border:1px solid var(--card-border); box-shadow:0 6px 18px rgba(0,0,0,.08); }
+    .ieee-hero{
+      display:grid; grid-template-columns:1fr; gap:14px;
+      background:var(--card); border:1px solid var(--card-border);
+      border-radius:var(--radius); padding:16px; box-shadow:var(--shadow);
+    }
+    .ieee-logo{
+      width:110px; height:110px; border-radius:12px; object-fit:cover;
+      background:#fff; border:1px solid var(--card-border);
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+    }
     .ieee-hero h2{ margin:0 0 6px; color:var(--brand); font-size:1.375rem; }
     .ieee-hero p{ margin:0; color:var(--ink-sub); line-height:1.6; }
 
     .hero-flex{ display:flex; gap:14px; align-items:center; }
     @media (min-width:640px){ .ieee-hero{ padding:18px; } .ieee-hero h2{ font-size:1.5rem; } }
-    @media (min-width:900px){ .ieee-hero{ grid-template-columns:auto 1fr; } .hero-flex{ align-items:center; } .ieee-logo{ width:140px; height:140px; } .ieee-hero h2{ font-size:1.75rem; } }
+    @media (min-width:900px){
+      .ieee-hero{ grid-template-columns:auto 1fr; }
+      .hero-flex{ align-items:center; }
+      .ieee-logo{ width:140px; height:140px; }
+      .ieee-hero h2{ font-size:1.75rem; }
+    }
 
     /* Sections */
-    .section{ background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); margin:16px 0; }
+    .section{
+      background:var(--card); border:1px solid var(--card-border);
+      border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); margin:16px 0;
+    }
     .section h3{ margin:0 0 10px; color:var(--brand); font-size:1.125rem; }
     .section p{ margin:0; color:var(--ink); line-height:1.7; }
     @media (min-width:640px){ .section{ padding:20px; } .section h3{ font-size:1.25rem; } }
@@ -72,7 +114,10 @@
 
     /* Gallery */
     .gallery{ display:grid; gap:10px; grid-template-columns: repeat(2, 1fr); }
-    .gallery img{ width:100%; height:auto; display:block; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,.1); cursor:zoom-in; transition: transform .18s ease; }
+    .gallery img{
+      width:100%; height:auto; display:block; border-radius:12px;
+      box-shadow:0 4px 16px rgba(0,0,0,.1); cursor:zoom-in; transition: transform .18s ease;
+    }
     .gallery img:hover{ transform: scale(1.02); }
     @media (min-width:640px){ .gallery{ gap:12px; grid-template-columns: repeat(3, 1fr); } }
     @media (min-width:1024px){ .gallery{ gap:14px; grid-template-columns: repeat(4, 1fr); } }
@@ -82,7 +127,11 @@
     .lightbox.open{ display:flex; }
     .lightbox-content{ position:relative; width:100%; max-width: min(1024px, 96vw); }
     .lightbox-content img{ width:100%; height:auto; max-height:82vh; border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,.4); }
-    .close{ position:absolute; top:-10px; right:-10px; background:rgba(255,255,255,.98); border:none; border-radius:999px; width:40px; height:40px; font-size:22px; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,.25); display:grid; place-items:center; }
+    .close{
+      position:absolute; top:-10px; right:-10px; background:rgba(255,255,255,.98);
+      border:none; border-radius:999px; width:40px; height:40px; font-size:22px; cursor:pointer;
+      box-shadow:0 4px 12px rgba(0,0,0,.25); display:grid; place-items:center;
+    }
     .close:focus{ outline:2px solid var(--brand-strong); outline-offset:2px; }
 
     /* Footer */
@@ -90,6 +139,9 @@
 
     /* Utility: hide heavy effects not used */
     .sky,.aurora,#space{ display:none; }
+
+    /* Accessible focus rings */
+    :where(a,button):focus-visible{ outline:2px solid #60a5fa; outline-offset:2px; border-radius:10px; }
   </style>
 </head>
 <body>
@@ -103,12 +155,11 @@
       </button>
       <nav id="navMenu" class="nav-links">
         <a href="index.html">Home</a>
-       
         <a href="index.html#projects">Projects</a>
         <a href="index.html#publications">Publications</a>
         <a href="index.html#cv">CV</a>
         <a href="hobbies.html">Hobbies</a>
-         <a href="activities.html" class="active">Activities</a>
+        <a href="activities.html" class="active">Activities</a>
         <a href="index.html#contact">Contact</a>
       </nav>
     </div>
@@ -172,23 +223,42 @@
     // Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Mobile nav toggle
+    // Mobile nav toggle with body scroll lock + outside/Esc close
     const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-    const header = document.querySelector('header');
-    navToggle.addEventListener('click', () => {
-      const open = header.classList.toggle('nav-open');
-      navToggle.setAttribute('aria-expanded', String(open));
-    });
-    // Close menu when clicking a link (mobile)
-    navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-      header.classList.remove('nav-open');
+    const navMenu   = document.getElementById('navMenu');
+    const headerEl  = document.querySelector('header');
+
+    function closeMenu(){
+      headerEl.classList.remove('nav-open');
       navToggle.setAttribute('aria-expanded','false');
-    }));
+      document.body.classList.remove('menu-lock');
+    }
+
+    navToggle.addEventListener('click', () => {
+      const open = headerEl.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('menu-lock', open);
+      if (open) navToggle.focus();
+    }, { passive: true });
+
+    // Close menu when clicking a link (mobile)
+    navMenu.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', closeMenu, { passive: true })
+    );
+
+    // Close on outside click
+    document.addEventListener('click', e => {
+      if (!headerEl.contains(e.target) && headerEl.classList.contains('nav-open')) closeMenu();
+    }, { passive: true });
+
+    // Close on Esc
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeMenu();
+    }, { passive: true });
 
     // Simple lightbox with accessibility tweaks
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lb-img');
+    const lb      = document.getElementById('lightbox');
+    const lbImg   = document.getElementById('lb-img');
     const lbClose = document.getElementById('lb-close');
 
     function openLightbox(src, alt){
@@ -196,13 +266,13 @@
       lb.classList.add('open');
       lb.removeAttribute('hidden');
       lbClose.focus();
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('menu-lock'); // prevent background scroll while modal
     }
     function closeLightbox(){
       lb.classList.remove('open');
       lb.setAttribute('hidden','');
       lbImg.src = '';
-      document.body.style.overflow = '';
+      document.body.classList.remove('menu-lock');
     }
 
     document.querySelectorAll('.gallery img').forEach(img=>{
