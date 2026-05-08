@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Utsha | Publications (Timeline)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#0b1220; --ink-sub:#334155; --muted:#64748b;
+      --brand:#1d4ed8; --brand-strong:#2563eb;
+      --bg-grad:linear-gradient(120deg,#e0f2fe,#e9d5ff,#ffe4e6,#fde68a,#bbf7d0);
+      --card: rgba(255,255,255,.88); --card-solid:#fff; --card-border: rgba(0,0,0,.08);
+      --shadow: 0 10px 28px rgba(2,6,23,.12);
+      --radius: 16px; --radius-lg:22px;
+    }
+    html{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; scroll-behavior:smooth;}
+    body{ margin:0; color:var(--ink); background:var(--bg-grad); background-size:600% 600%; animation:cosmicShift 20s ease-in-out infinite; }
+    @keyframes cosmicShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    @media (prefers-reduced-motion:reduce){ body{ animation:none; } }
+
+    /* Hide BibTeX textareas entirely (keeps copy working) */
+    textarea.sr{ display:none !important; }
+
+    header{ position:sticky; top:0; z-index:40; background:rgba(255,255,255,.7); backdrop-filter:blur(12px); border-bottom:1px solid var(--card-border); }
+    
+    /* NEW: mobile nav toggle (hamburger) */
+    
+    
+
+    .wrap{ max-width:1100px; margin:0 auto; padding:18px; }
+    .hero{ position:relative; margin:16px 0; padding:18px; border-radius:var(--radius-lg); background:var(--card); border:1px solid var(--card-border); box-shadow:var(--shadow); overflow:hidden; }
+    .hero:before{ content:""; position:absolute; inset:-2px; border-radius:calc(var(--radius-lg) + 2px); padding:2px;
+      background:conic-gradient(from 180deg, #60a5fa,#a78bfa,#f472b6,#34d399,#60a5fa);
+      -webkit-mask:linear-gradient(#0000,#0000) content-box, linear-gradient(#000,#000); -webkit-mask-composite:xor; mask-composite:exclude; opacity:.25; animation:spin 8s linear infinite; }
+    @keyframes spin{to{transform:rotate(1turn)}}
+    .hero h2{ margin:0 0 6px; font-size:1.55rem; color:var(--ink); }
+    .hero p{ margin:0; color:var(--muted); }
+
+    .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .chip{ padding:8px 12px; border-radius:999px; border:1px solid var(--card-border); background:var(--card-solid); font-weight:600; cursor:pointer; }
+    .chip.active{ background:rgba(37,99,235,.12); color:#1d4ed8; border-color:#93c5fd; }
+    .search{ flex:1 1 240px; min-width:200px; display:flex; align-items:center; gap:8px; border:1px solid var(--card-border); border-radius:12px; padding:8px 10px; background:var(--card-solid); }
+    .search input{ width:100%; border:0; outline:0; background:transparent; color:var(--ink); font:inherit; }
+
+    .section{ background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); margin:16px 0; }
+    .timeline{ position:relative; margin:0; padding:0; list-style:none; }
+    .timeline:before{ content:""; position:absolute; left:12px; top:0; bottom:0; width:2px; background:linear-gradient(#93c5fd,#fbcfe8); opacity:.7; }
+    .item{ position:relative; margin:16px 0 16px 28px; }
+    .node{ position:absolute; left:-18px; top:10px; width:12px; height:12px; border-radius:999px; background:linear-gradient(135deg,#60a5fa,#f472b6); box-shadow:0 0 0 4px rgba(99,102,241,.18); }
+
+    .pub-card{ background:linear-gradient(135deg, rgba(255,255,255,.96), rgba(241,245,249,.9)); border:1px solid var(--card-border);
+      border-radius:14px; padding:16px; box-shadow:0 6px 18px rgba(0,0,0,.08); transition:transform .2s ease, box-shadow .2s ease; }
+    .pub-card:hover{ transform:translateY(-3px); box-shadow:0 16px 36px rgba(2,6,23,.14); }
+    .meta-row{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:6px 0 10px; }
+    .badge{ display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; border:1px solid var(--card-border); background:var(--card-solid); color:var(--muted); font-weight:700; font-size:.8rem; }
+    .dot{ width:8px; height:8px; border-radius:999px; }
+    .pub-title{ margin:0 0 8px; font-size:1.06rem; color:var(--ink); }
+    .pub-meta{ margin:2px 0; color:var(--ink-sub); font-size:.95rem; line-height:1.55; }
+    .pub-links{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+    .btn{ text-decoration:none; display:inline-flex; align-items:center; gap:8px; padding:9px 12px; border-radius:12px; background:linear-gradient(135deg,#2563eb,#60a5fa); color:#fff; font-weight:800; border:none; cursor:pointer; }
+    .btn.secondary{ background:#fff; color:#0f172a; border:1px solid var(--card-border); }
+
+    footer{ text-align:center; color:#334155; padding:24px; }
+
+    @media (max-width:600px){
+      nav ul{ gap:10px; } 
+      .pub-card{ padding:14px; }
+    }
+
+    /* NEW: responsive nav behavior for small screens */
+    .wrap{
+  max-width:1120px;
+  margin:0 auto;
+  padding:16px;
+}
+
+@media (min-width:640px){
+  .wrap{
+    padding:22px;
+  }
+}
+
+/* Header */
+header{
+  position:sticky;
+  top:0;
+  z-index:40;
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--card-border);
+}
+
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.brand{
+  margin:0;
+  font-size:1.35rem;
+  font-weight:800;
+  letter-spacing:.2px;
+  background:linear-gradient(135deg,#60a5fa,#a78bfa,#f472b6);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.nav-toggle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  border:1px solid var(--card-border);
+  background:var(--card-solid);
+  box-shadow:0 6px 16px rgba(2,6,23,.06);
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-links{
+  display:none;
+  flex-direction:column;
+  gap:8px;
+  padding:12px;
+  margin:10px 0 0;
+  background:var(--card);
+  border:1px solid var(--card-border);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#1e3a8a;
+  font-weight:600;
+  padding:10px 12px;
+  border-radius:10px;
+}
+
+.nav-links a:hover,
+.nav-links a:focus,
+.nav-links a.active{
+  color:var(--brand-strong);
+  background:rgba(37,99,235,.1);
+}
+
+.nav-open .nav-links{
+  display:flex;
+}
+
+@media (min-width:768px){
+  .nav-toggle{
+    display:none;
+  }
+
+  .nav-links{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:16px;
+    background:transparent;
+    border:none;
+    box-shadow:none;
+    padding:0;
+    margin:0;
+  }
+
+  .nav-links a{
+    padding:8px 10px;
+  }
+}
+
+
+
+  </style>
+</head>
+<body>
+ <header>
+  <div class="wrap navbar" role="navigation" aria-label="Primary">
+  <h1 class="brand">
+  <a href="index.html" style="text-decoration:none; color:inherit;">
+    Utsha
+  </a>
+</h1>
+
+    <div style="display:flex; align-items:center; gap:8px;">
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="#111827" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav id="navMenu" class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="certifications.html">Certifications</a>
+     
+      <a href="hobbies.html">Hobbies</a>
+      <a href="activities.html">Activities</a>
+       <a href="index.html#cv">CV</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="wrap">
+    <section class="hero" aria-labelledby="pubs-title">
+    <h2>
+  <a href="publications.html"
+     style="text-decoration:none; color:#2563eb;">
+    Publications
+  </a>
+</h2>
+      <p>Peer-reviewed papers and conference contributions. Filter by year or search titles/authors.</p>
+      <div class="controls">
+        <div class="chips" role="tablist" aria-label="Year filters">
+          <button class="chip active" data-year="all" role="tab" aria-selected="true">All</button>
+          <button class="chip" data-year="2025" role="tab">2025</button>
+          <button class="chip" data-year="2024" role="tab">2024</button>
+          <button class="chip" data-year="2023" role="tab">2023</button>
+        </div>
+        <label class="search" aria-label="Search publications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="pubSearch" placeholder="Search title, authors…" />
+        </label>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Publication list" id="pubList">
+      <ul class="timeline">
+
+        <!-- ====================== -->
+        <!-- Accepted papers first  -->
+        <!-- ====================== -->
+
+        <!-- Accepted (A2) – RAAICON Federated Learning -->
+        <li class="item" data-year="2025">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">A Unified Adversarially-Robust and Privacy-Preserving Federated Learning Framework for Multimodal Healthcare IoT — IEEE RAAICON 2025 (Accepted)</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#34d399"></span> RAAICON</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2025</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+              <span class="badge"><span class="dot" style="background:#f59e0b"></span> Accepted</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> <strong>Md. Awinul Hoque Utsha</strong>, Farshid Rafiq, Yeasir Ramim, Ezaz Mahmud Jim, Anuradha Choudhury, Mohammad Akidul Hoque</p>
+            <p class="pub-meta"><strong>Conference:</strong> 4th International Conference on Robotics, Automation, Artificial-Intelligence and Internet-of-Things (RAAICON), IEEE, 2025. Accepted.</p>
+            <div class="pub-links">
+              <a class="btn secondary" href="RAAICON.pdf" target="_blank" rel="noopener">PDF / Manuscript</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib8">Copy BibTeX</button>
+            </div>
+            <textarea id="bib8" class="sr">@inproceedings{utsha2025federated,
+  title={A Unified Adversarially-Robust and Privacy-Preserving Federated Learning Framework for Multimodal Healthcare IoT},
+  author={Utsha, Md. Awinul Hoque and Rafiq, Farshid and Ramim, Yeasir and Jim, Ezaz Mahmud and Choudhury, Anuradha and Hoque, Mohammad Akidul},
+  booktitle={4th International Conference on Robotics, Automation, Artificial-Intelligence and Internet-of-Things (RAAICON)},
+  year={2025},
+  note={Accepted}
+}</textarea>
+          </article>
+        </li>
+
+        <!-- 2025 – ICCIT: Peer-Relative Percentile Features -->
+        <li class="item" data-year="2025">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">From Absolute to Relative: Peer-Relative Percentile Features for Robust Student Performance Prediction — IEEE ICCIT 2025 (Accepted)</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#60a5fa"></span> ICCIT</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2025</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+              <span class="badge"><span class="dot" style="background:#f59e0b"></span> Accepted</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> <strong>Md. Awinul Hoque Utsha</strong>, Farshid Rafiq, Ezaz Mahmud Jim, Mosaddika Hoque, Yeasir Ramim, Md. Mahin Khan</p>
+            <p class="pub-meta"><strong>Conference:</strong> 28th International Conference on Computer and Information Technology (ICCIT), IEEE, 2025. Accepted.</p>
+            <div class="pub-links">
+              <!-- Replace # with actual PDF link when available -->
+              <a class="btn secondary" href="556.pdf" target="_blank" rel="noopener">PDF / Manuscript</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib_iccit_peerrelative">Copy BibTeX</button>
+            </div>
+            <textarea id="bib_iccit_peerrelative" class="sr">@inproceedings{utsha2025peerrelative,
+  title={From Absolute to Relative: Peer-Relative Percentile Features for Robust Student Performance Prediction},
+  author={Utsha, Md. Awinul Hoque and Rafiq, Farshid and Jim, Ezaz Mahmud and Hoque, Mosaddika and Ramim, Yeasir and Khan, Md. Mahin},
+  booktitle={28th International Conference on Computer and Information Technology (ICCIT)},
+  year={2025},
+  note={Accepted}
+}</textarea>
+          </article>
+        </li>
+
+        <!-- 2025 – ICCIT: Brain Tumor Adversarial Robustness -->
+        <li class="item" data-year="2025">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Mitigating Adversarial Vulnerabilities in Brain Tumor Imaging: Threat Analysis and Defense Strategies — IEEE ICCIT 2025 (Accepted)</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#60a5fa"></span> ICCIT</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2025</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+              <span class="badge"><span class="dot" style="background:#f59e0b"></span> Accepted</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> <strong>Md. Awinul Hoque Utsha</strong>, Ezaz Mahmud Jim, Mynuddin Patwary, Faria Akter, Rizwan Ahmed, Farshid Rafiq</p>
+            <p class="pub-meta"><strong>Conference:</strong> 28th International Conference on Computer and Information Technology (ICCIT), IEEE, 2025. Accepted.</p>
+            <div class="pub-links">
+              <a class="btn secondary" href="334.pdf" target="_blank" rel="noopener">PDF / Manuscript</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib_iccit_braintumor">Copy BibTeX</button>
+            </div>
+            <textarea id="bib_iccit_braintumor" class="sr">@inproceedings{utsha2025braintumor,
+  title={Mitigating Adversarial Vulnerabilities in Brain Tumor Imaging: Threat Analysis and Defense Strategies},
+  author={Utsha, Md. Awinul Hoque and Jim, Ezaz Mahmud and Patwary, Mynuddin and Akter, Faria and Ahmed, Rizwan and Rafiq, Farshid},
+  booktitle={28th International Conference on Computer and Information Technology (ICCIT)},
+  year={2025},
+  note={Accepted}
+}</textarea>
+          </article>
+        </li>
+
+        <!-- 2025 – ICCIT: NeSy IDS -->
+        <li class="item" data-year="2025">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Neuro-Symbolic AI for Transparent and Adaptive Intrusion Detection Systems — IEEE ICCIT 2025 (Accepted)</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#60a5fa"></span> ICCIT</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2025</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+              <span class="badge"><span class="dot" style="background:#f59e0b"></span> Accepted</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> <strong>Md. Awinul Hoque Utsha</strong>, Farshid Rafiq, Fabiha Nawal Aurna, Mynuddin Patwary, Anuradha Choudhury, Mohammad Akidul Hoque</p>
+            <p class="pub-meta"><strong>Conference:</strong> 28th International Conference on Computer and Information Technology (ICCIT), IEEE, 2025. Accepted.</p>
+            <div class="pub-links">
+              <a class="btn secondary" href="1038.pdf" target="_blank" rel="noopener">PDF / Manuscript</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib_iccit_nesy_ids">Copy BibTeX</button>
+            </div>
+            <textarea id="bib_iccit_nesy_ids" class="sr">@inproceedings{utsha2025nesyids,
+  title={Neuro-Symbolic AI for Transparent and Adaptive Intrusion Detection Systems},
+  author={Utsha, Md. Awinul Hoque and Rafiq, Farshid and Aurna, Fabiha Nawal and Patwary, Mynuddin and Choudhury, Anuradha and Hoque, Mohammad Akidul},
+  booktitle={28th International Conference on Computer and Information Technology (ICCIT)},
+  year={2025},
+  note={Accepted}
+}</textarea>
+          </article>
+        </li>
+
+        <!-- 2025 – WIECON-ECE: NeSy High-Stakes -->
+        <li class="item" data-year="2025">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Neuro-Symbolic AI for Transparent Decision-Making in High-Stakes Domains — IEEE WIECON-ECE 2025 (Accepted)</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#6366f1"></span> WIECON-ECE</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2025</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+              <span class="badge"><span class="dot" style="background:#f59e0b"></span> Accepted</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> <strong>Md. Awinul Hoque Utsha</strong>, Naimul Haque, Fabiha Nawal Aurna, Mosaddika Hoque, Bin Murad Murad, Farshid Rafiq</p>
+            <p class="pub-meta"><strong>Conference:</strong> IEEE International Women in Engineering Conference on Electrical and Computer Engineering (WIECON-ECE), IEEE, 2025. Accepted.</p>
+            <div class="pub-links">
+              <a class="btn secondary" href="64.pdf" target="_blank" rel="noopener">PDF / Manuscript</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib_wiecon_nesy_highstakes">Copy BibTeX</button>
+            </div>
+            <textarea id="bib_wiecon_nesy_highstakes" class="sr">@inproceedings{utsha2025nesyhighstakes,
+  title={Neuro-Symbolic AI for Transparent Decision-Making in High-Stakes Domains},
+  author={Utsha, Md. Awinul Hoque and Haque, Naimul and Aurna, Fabiha Nawal and Hoque, Mosaddika and Murad, Bin Murad and Rafiq, Farshid},
+  booktitle={IEEE International Women in Engineering Conference on Electrical and Computer Engineering (WIECON-ECE)},
+  year={2025},
+  note={Accepted}
+}</textarea>
+          </article>
+        </li>
+
+        <!-- 2025 – WIECON-ECE: APTs with NeSy KG -->
+        <li class="item" data-year="2025">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Ontology-Based Knowledge Graphs for Detecting Advanced Persistent Threats (APTs) with Neurosymbolic AI — IEEE WIECON-ECE 2025 (Accepted)</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#6366f1"></span> WIECON-ECE</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2025</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+              <span class="badge"><span class="dot" style="background:#f59e0b"></span> Accepted</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> <strong>Md. Awinul Hoque Utsha</strong>, Farshid Rafiq, Soheli Tangila Richi, Md. Mahin Khan, Yeasir Ramim, Fabiha Nawal Aurna</p>
+            <p class="pub-meta"><strong>Conference:</strong> IEEE International Women in Engineering Conference on Electrical and Computer Engineering (WIECON-ECE), IEEE, 2025. Accepted.</p>
+            <div class="pub-links">
+              <a class="btn secondary" href="87.pdf" target="_blank" rel="noopener">PDF / Manuscript</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib_wiecon_apt_kg">Copy BibTeX</button>
+            </div>
+            <textarea id="bib_wiecon_apt_kg" class="sr">@inproceedings{utsha2025aptkg,
+  title={Ontology-Based Knowledge Graphs for Detecting Advanced Persistent Threats (APTs) with Neurosymbolic AI},
+  author={Utsha, Md. Awinul Hoque and Rafiq, Farshid and Richi, Soheli Tangila and Khan, Md. Mahin and Ramim, Yeasir and Aurna, Fabiha Nawal},
+  booktitle={IEEE International Women in Engineering Conference on Electrical and Computer Engineering (WIECON-ECE)},
+  year={2025},
+  note={Accepted}
+}</textarea>
+          </article>
+        </li>
+
+
+
+        <!-- Accepted (A3) – SPICSCON Sparse Transformer -->
+        <li class="item" data-year="2025">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Sparse Transformer Variants with Provable Expressivity: Theoretical Limits and Scalable Architectures — IEEE SPICSCON 2025 (Accepted)</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#34d399"></span> SPICSCON</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2025</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+              <span class="badge"><span class="dot" style="background:#f59e0b"></span> Accepted</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> <strong>Md. Awinul Hoque Utsha</strong>, Farshid Rafiq, Fabiha Nawal Aurna, Mynuddin Patwary, Soheli Tangila Richi, Ezaz Mahmud Jim</p>
+            <p class="pub-meta"><strong>Conference:</strong> IEEE International Conference on Signal Processing, Information, Communication and Systems (SPICSCON), IEEE, 2025. Accepted.</p>
+            <div class="pub-links">
+              <a class="btn secondary" href="Sparse_Transformer_Variants_with_Provable_Expressivity__Theoretical_Limits_and_Scalable_Architectures (6).pdf" target="_blank" rel="noopener">PDF / Manuscript</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib9">Copy BibTeX</button>
+            </div>
+            <textarea id="bib9" class="sr">@inproceedings{utsha2025sparse,
+  title={Sparse Transformer Variants with Provable Expressivity: Theoretical Limits and Scalable Architectures},
+  author={Utsha, Md. Awinul Hoque and Rafiq, Farshid and Aurna, Fabiha Nawal and Patwary, Mynuddin and Richi, Soheli Tangila and Jim, Ezaz Mahmud},
+  booktitle={IEEE International Conference on Signal Processing, Information, Communication and Systems (SPICSCON)},
+  year={2025},
+  note={Accepted}
+}</textarea>
+          </article>
+        </li>
+        
+        <!-- Accepted (A1) – Blockchain Hajj (SPICSCON) -->
+        <li class="item" data-year="2025">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Blockchain-Based Hajj Pilgrim Registration System: Enhancing Transparency and Security — IEEE SPICSCON 2025 (Accepted)</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#34d399"></span> SPICSCON</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2025</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+              <span class="badge"><span class="dot" style="background:#f59e0b"></span> Accepted</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Md. Mahin Khan, <strong>Md. Awinul Hoque Utsha</strong>, Yeasir Ramim, Md. Asaduzzaman, Fabiha Nawal Aurna, Farshid Rafiq</p>
+            <p class="pub-meta"><strong>Conference:</strong> IEEE International Conference on Signal Processing, Information, Communication and Systems (SPICSCON), IEEE, 2025. Accepted.</p>
+            <div class="pub-links">
+              <a class="btn secondary" href="Blockchain_Based_Hajj_Pilgrim_Registration_System (8).pdf" target="_blank" rel="noopener">PDF / Manuscript</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib10">Copy BibTeX</button>
+            </div>
+            <textarea id="bib10" class="sr">@inproceedings{khan2025hajjblockchain,
+  title={Blockchain-Based Hajj Pilgrim Registration System: Enhancing Transparency and Security},
+  author={Khan, Md. Mahin and Utsha, Md. Awinul Hoque and Ramim, Yeasir and Asaduzzaman, Md. and Aurna, Fabiha Nawal and Rafiq, Farshid},
+  booktitle={IEEE International Conference on Signal Processing, Information, Communication and Systems (SPICSCON)},
+  year={2025},
+  note={Accepted}
+}</textarea>
+          </article>
+        </li>
+
+        <!-- 2025 (E1) – ECCE Safer Aging -->
+        <li class="item" data-year="2025">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Towards Safer Aging: A Comprehensive Edge Computing Approach to Unconsciousness and Fall Detection — IEEE ECCE 2025</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#34d399"></span> ECCE</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2025</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Ezaz Mahmud Jim, Md. Awinul Hoque Utsha, Fabiha Nawal Aurna, Anuradha Choudhury, Mohammad Akidul Hoque</p>
+            <p class="pub-meta"><strong>Conference:</strong> ECCE (IEEE), 2025.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/392221192_Towards_Safer_Aging_A_Comprehensive_Edge_Computing_Approach_to_Unconsciousness_and_Fall_Detection" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib6">Copy BibTeX</button>
+            </div>
+            <textarea id="bib6" class="sr">@inproceedings{jim2025saferaging,
+  title={Towards Safer Aging: A Comprehensive Edge Computing Approach to Unconsciousness and Fall Detection},
+  booktitle={ECCE},
+  year={2025},
+  author={Jim, Ezaz Mahmud and Utsha, Md. Awinul Hoque and others}
+}</textarea>
+          </article>
+        </li>
+
+        <!-- 2025 (E2) – ECCE Monolithic vs Microservices -->
+        <li class="item" data-year="2025">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Comparative Analysis between Monolithic and Microservices Architecture Based on Web Streaming Applications — IEEE ECCE 2025</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#34d399"></span> ECCE</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2025</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Jurayak Kader, Md Abu Rayhan Abir, S.M. Tarikil Islam, Md. Awinul Hoque Utsha, Nowsad Islam Shuvo, Ezaz Mahmud Jim, Salekul Islam</p>
+            <p class="pub-meta"><strong>Conference:</strong> ECCE (IEEE), 2025.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:d1gkVwhDpl0C" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/392224139_Comparative_Analysis_between_Monolithic_and_Microservice_Architecture_Based_on_Web_Streaming_Applications" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib7">Copy BibTeX</button>
+            </div>
+            <textarea id="bib7" class="sr">@inproceedings{kader2025microservices,
+  title={Comparative Analysis between Monolithic and Microservices Architecture Based on Web Streaming Applications},
+  booktitle={ECCE},
+  year={2025},
+  author={Kader, Jurayak and Utsha, Md. A. H. and others}
+}</textarea>
+          </article>
+        </li>
+
+        <!-- 2024 (1) -->
+        <li class="item" data-year="2024">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">High School Students’ Performance Analyzer using Machine Learning — IEEE ICCIT 2024</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#60a5fa"></span> ICCIT</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2024</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Md. Awinul Hoque Utsha, Md. Farnas Utsho, Bushra Jannat, Md. Shojib Talukder</p>
+            <p class="pub-meta"><strong>Conference:</strong> ICCIT (IEEE), 2024.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:2osOgNQ5qMEC" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/392563509_High_School_Students'_Performance_Analyzer_Using_Machine_Learning_Approach" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib2">Copy BibTeX</button>
+            </div>
+            <textarea id="bib2" class="sr">@inproceedings{utsha2024hsperf,
+  title={High School Students’ Performance Analyzer using ML},
+  booktitle={ICCIT},
+  year={2024},
+  author={Utsha, Md. A. H. and others}
+}</textarea>
+          </article>
+        </li>
+
+        <!-- 2024 (2) -->
+        <li class="item" data-year="2024">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Smart Grid Stability Prediction for Efficient Power Management using Machine Learning — IEEE ICCIT 2024</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#60a5fa"></span> ICCIT</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2024</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Md. Awinul Hoque Utsha, Rakibul Islam, Ovie Rahaman Sheikh, Nuren Akter, Mohammad Akidul Hoque</p>
+            <p class="pub-meta"><strong>Conference:</strong> ICCIT (IEEE), 2024.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:UeHWp8X0CEIC" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/392564733_Smart_Grid_Stability_Prediction_for_Efficient_Power_Management_using_Machine_Learning" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib3">Copy BibTeX</button>
+            </div>
+            <textarea id="bib3" class="sr">@inproceedings{utsha2024smartgrid,
+  title={Smart Grid Stability Prediction for Efficient Power Management using Machine Learning},
+  booktitle={ICCIT},
+  year={2024},
+  author={Utsha, Md. A. H. and others}
+}</textarea>
+          </article>
+        </li>
+
+        <!-- 2024 (3) -->
+        <li class="item" data-year="2024">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Correlation-based Feature Extraction to Improve Classification Accuracy — IEEE ICCIT 2024</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#60a5fa"></span> ICCIT</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2024</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Rakibul Islam, Md. Awinul Hoque Utsha, Md. Mansurul Haque, Ezaz Mahmud Jim, Yeasir Ramim, Md. Mehedi Hasan Hridoy</p>
+            <p class="pub-meta"><strong>Conference:</strong> ICCIT (IEEE), 2024.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:qjMakFHDy7sC" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/392564867_Co-relation-based_Feature_Extraction_to_Improve_Classification_Accuracy" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib4">Copy BibTeX</button>
+            </div>
+            <textarea id="bib4" class="sr">@inproceedings{islam2024corrfeat,
+  title={Correlation-based Feature Extraction to Improve Classification Accuracy},
+  booktitle={ICCIT},
+  year={2024},
+  author={Islam, Rakibul and Utsha, Md. A. H. and others}
+}</textarea>
+          </article>
+        </li>
+
+        <!-- 2024 (4) -->
+        <li class="item" data-year="2024">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Sentiment Analysis for Banglish Text using Machine Learning Approach — IEEE ICCIT 2024</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#60a5fa"></span> ICCIT</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2024</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Musfique Ahmed, Fardin Hasan Siam, Neamul Islam Fahim, Md. Awinul Hoque Utsha, Md. Mahin Khan, Mohammad Nurul Huda</p>
+            <p class="pub-meta"><strong>Conference:</strong> ICCIT (IEEE), 2024.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:IjCSPb-OGe4C" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/392565040_Sentiment_Analysis_for_Banglish_Text_using_Machine_Learning_Approach" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib5">Copy BibTeX</button>
+            </div>
+            <textarea id="bib5" class="sr">@inproceedings{ahmed2024banglish,
+  title={Sentiment Analysis for Banglish Text using Machine Learning Approach},
+  booktitle={ICCIT},
+  year={2024},
+  author={Ahmed, Musfique and Utsha, Md. A. H. and others}
+}</textarea>
+          </article>
+        </li>
+
+        <!-- 2023 -->
+        <li class="item" data-year="2023">
+          <span class="node" aria-hidden="true"></span>
+          <article class="pub-card">
+            <h4 class="pub-title">Decision Tree using Feature Grouping — IEEE ICCIT 2023</h4>
+            <div class="meta-row">
+              <span class="badge"><span class="dot" style="background:#60a5fa"></span> ICCIT</span>
+              <span class="badge"><span class="dot" style="background:#34d399"></span> 2023</span>
+              <span class="badge"><span class="dot" style="background:#a78bfa"></span> IEEE</span>
+            </div>
+            <p class="pub-meta"><strong>Authors:</strong> Neamul Islam Fahim, Md. Awinul Hoque Utsha, Raj Shekhar Karmaker, Md Oli Ullah, Dewan Md. Farid</p>
+            <p class="pub-meta"><strong>Conference:</strong> ICCIT (IEEE), 2023, pp. 1–6.</p>
+            <div class="pub-links">
+              <a class="btn" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=93PTwHEAAAAJ&citation_for_view=93PTwHEAAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn secondary" href="https://www.researchgate.net/publication/378534829_Decision_Tree_using_Feature_Grouping" target="_blank" rel="noopener">ResearchGate</a>
+              <button class="btn secondary copy-btn" data-bibtex="#bib1">Copy BibTeX</button>
+            </div>
+            <textarea id="bib1" class="sr">@inproceedings{fahim2023featuregrouping,
+  title={Decision Tree using Feature Grouping},
+  booktitle={ICCIT},
+  year={2023},
+  author={Fahim, Neamul Islam and Utsha, Md. Awinul Hoque and others}
+}</textarea>
+          </article>
+        </li>
+
+      </ul>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> Md. Awinul Hoque Utsha</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // NEW: mobile nav toggle logic
+    const navToggle = document.querySelector('.nav-toggle');
+    const navList = document.querySelector('nav ul');
+
+    if (navToggle && navList) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navList.classList.toggle('show');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Close menu when a link is clicked (on mobile)
+      navList.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (navList.classList.contains('show')) {
+            navList.classList.remove('show');
+            navToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+
+    // Filter + Search
+    const chips = document.querySelectorAll('.chip');
+    const items = Array.from(document.querySelectorAll('.item'));
+    const search = document.getElementById('pubSearch');
+
+    function apply(){
+      const active = document.querySelector('.chip.active')?.dataset.year || 'all';
+      const q = (search.value || '').toLowerCase().trim();
+      items.forEach(it => {
+        const yearOk = active === 'all' || it.dataset.year === active;
+        const text = it.textContent.toLowerCase();
+        const qOk = !q || text.includes(q);
+        it.style.display = (yearOk && qOk) ? '' : 'none';
+      });
+    }
+
+    chips.forEach(ch => ch.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      ch.classList.add('active');
+      apply();
+    }));
+    search.addEventListener('input', apply);
+
+    // Copy BibTeX
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.bibtex;
+        const el = document.querySelector(id);
+        if (!el) return;
+        navigator.clipboard.writeText(el.value || '').then(() => {
+          const old = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => btn.textContent = old, 1200);
+        });
+      });
+    });
+    <script>
+  const navToggle = document.getElementById("navToggle");
+  const navMenu = document.getElementById("navMenu");
+
+  navToggle.addEventListener("click", () => {
+    document.querySelector(".navbar").classList.toggle("nav-open");
+
+    const expanded =
+      navToggle.getAttribute("aria-expanded") === "true";
+
+    navToggle.setAttribute("aria-expanded", !expanded);
+  });
+</script>
+  </script>
+</body>
+</html>

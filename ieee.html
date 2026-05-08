@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>IEEE UIU Student Branch | Utsha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#e0f2fe; --bg2:#e9d5ff; --bg3:#ffe4e6; --bg4:#fde68a; --bg5:#bbf7d0;
+      --ink:#111827; --ink-sub:#334155; --brand:#1d4ed8; --brand-strong:#2563eb;
+      --card: rgba(255,255,255,.85); --card-border: rgba(0,0,0,.06);
+      --shadow: 0 10px 28px rgba(0,0,0,.08);
+      --radius: 16px;
+    }
+
+    /* Base + mobile-first */
+    html{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;}
+    body{
+      margin:0; color:var(--ink); background: linear-gradient(120deg,var(--bg1),var(--bg2),var(--bg3),var(--bg4),var(--bg5));
+      background-size:600% 600%; animation: cosmicShift 20s ease-in-out infinite;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    @keyframes cosmicShift{ 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    @media (prefers-reduced-motion: reduce){ body{ animation: none; } }
+
+    .wrap{ max-width:1100px; margin:0 auto; padding:16px; }
+    @media (min-width:640px){ .wrap{ padding:20px; } }
+    @media (min-width:1024px){ .wrap{ padding:26px 18px; } }
+
+    /* Header / Nav */
+    header{
+      position:sticky; top:0; z-index:1000;
+      background:rgba(255,255,255,.7);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--card-border);
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+    }
+    .navbar{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .brand{ margin:0; font-size:1.25rem; font-weight:700; letter-spacing:.2px; }
+
+    /* Mobile nav */
+    .nav-toggle{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:42px; height:42px; border-radius:10px;
+      border:1px solid var(--card-border); background:#fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,.06); cursor:pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .nav-toggle:focus{ outline:2px solid var(--brand-strong); outline-offset:2px; }
+    .nav-links{
+      display:none; flex-direction:column; gap:8px; padding:12px; margin:10px 0 0;
+      background:var(--card); border:1px solid var(--card-border); border-radius:12px; box-shadow:var(--shadow);
+      width:100%;
+    }
+    .nav-links a{
+      text-decoration:none; color:#1e3a8a; font-weight:600; padding:10px 12px; border-radius:10px;
+    }
+    .nav-links a:hover, .nav-links a:focus, .nav-links a.active{
+      color:var(--brand-strong); background:rgba(37,99,235,.08);
+    }
+    .nav-open .nav-links{ display:flex; }
+    body.menu-lock{ overflow:hidden; } /* prevent bg scroll when menu open */
+
+    /* Desktop nav */
+    @media (min-width:768px){
+      .nav-toggle{ display:none; }
+      .nav-links{
+        display:flex; flex-direction:row; align-items:center; gap:16px;
+        background:transparent; border:none; box-shadow:none; padding:0; margin:0;
+        width:auto;
+      }
+      .nav-links a{ padding:8px 10px; }
+    }
+
+    /* Hero */
+    .ieee-hero{
+      display:grid; grid-template-columns:1fr; gap:14px;
+      background:var(--card); border:1px solid var(--card-border);
+      border-radius:var(--radius); padding:16px; box-shadow:var(--shadow);
+    }
+    .ieee-logo{
+      width:110px; height:110px; border-radius:12px; object-fit:cover;
+      background:#fff; border:1px solid var(--card-border);
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+    }
+    .ieee-hero h2{ margin:0 0 6px; color:var(--brand); font-size:1.375rem; }
+    .ieee-hero p{ margin:0; color:var(--ink-sub); line-height:1.6; }
+
+    .hero-flex{ display:flex; gap:14px; align-items:center; }
+    @media (min-width:640px){ .ieee-hero{ padding:18px; } .ieee-hero h2{ font-size:1.5rem; } }
+    @media (min-width:900px){
+      .ieee-hero{ grid-template-columns:auto 1fr; }
+      .hero-flex{ align-items:center; }
+      .ieee-logo{ width:140px; height:140px; }
+      .ieee-hero h2{ font-size:1.75rem; }
+    }
+
+    /* Sections */
+    .section{
+      background:var(--card); border:1px solid var(--card-border);
+      border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); margin:16px 0;
+    }
+    .section h3{ margin:0 0 10px; color:var(--brand); font-size:1.125rem; }
+    .section p{ margin:0; color:var(--ink); line-height:1.7; }
+    @media (min-width:640px){ .section{ padding:20px; } .section h3{ font-size:1.25rem; } }
+
+    /* Positions */
+    .positions{ padding-left:18px; margin:0; }
+    .positions li{ margin:6px 0; line-height:1.6; }
+
+    /* Gallery */
+    .gallery{ display:grid; gap:10px; grid-template-columns: repeat(2, 1fr); }
+    .gallery img{
+      width:100%; height:auto; display:block; border-radius:12px;
+      box-shadow:0 4px 16px rgba(0,0,0,.1); cursor:zoom-in; transition: transform .18s ease;
+    }
+    .gallery img:hover{ transform: scale(1.02); }
+    @media (min-width:640px){ .gallery{ gap:12px; grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width:1024px){ .gallery{ gap:14px; grid-template-columns: repeat(4, 1fr); } }
+
+    /* Lightbox */
+    .lightbox{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.8); z-index:999; padding:16px; }
+    .lightbox.open{ display:flex; }
+    .lightbox-content{ position:relative; width:100%; max-width: min(1024px, 96vw); }
+    .lightbox-content img{ width:100%; height:auto; max-height:82vh; border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,.4); }
+    .close{
+      position:absolute; top:-10px; right:-10px; background:rgba(255,255,255,.98);
+      border:none; border-radius:999px; width:40px; height:40px; font-size:22px; cursor:pointer;
+      box-shadow:0 4px 12px rgba(0,0,0,.25); display:grid; place-items:center;
+    }
+    .close:focus{ outline:2px solid var(--brand-strong); outline-offset:2px; }
+
+    /* Footer */
+    footer{ text-align:center; color:var(--ink-sub); padding:22px; font-size:.95rem; }
+
+    /* Utility: hide heavy effects not used */
+    .sky,.aurora,#space{ display:none; }
+
+    /* Accessible focus rings */
+    :where(a,button):focus-visible{ outline:2px solid #60a5fa; outline-offset:2px; border-radius:10px; }
+<<<<<<< HEAD
+
+    .back-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 16px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:700;
+  background:linear-gradient(135deg,#60a5fa,#a78bfa);
+  color:white;
+  box-shadow:0 6px 18px rgba(37,99,235,.2);
+  transition:0.2s ease;
+}
+
+.back-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(37,99,235,.28);
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap navbar" role="navigation" aria-label="Primary">
+
+      <h1 class="brand">
+  <a href="index.html" style="text-decoration:none; color:inherit;">
+    Utsha
+  </a>
+</h1>
+
+  
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="#111827" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <nav id="navMenu" class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="publications.html">Publications</a>
+
+         <a href="certifications.html">Certifications</a>
+
+        
+        <a href="hobbies.html">Hobbies</a>
+        <a href="activities.html" class="active">Activities</a>
+        <a href="index.html#cv">CV</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+
+
+  <div class="wrap" style="margin-top:16px;">
+  <a href="activities.html" class="back-btn">
+    ← Back to Activities
+  </a>
+</div>
+
+
+  <main class="wrap" id="main">
+    <!-- HERO -->
+    <section class="ieee-hero" aria-labelledby="sb-title">
+      <div class="hero-flex">
+        <img class="ieee-logo" src="ieee_logo.jpg" alt="IEEE UIU Student Branch Logo"/>
+        <div>
+          <h2 id="sb-title">IEEE UIU Student Branch</h2>
+          <p>As an active member and later Chairperson, I led initiatives that fostered technical learning, research exposure, and community building among UIU students.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="section" aria-labelledby="about-title">
+      <h3 id="about-title">About IEEE UIU SB</h3>
+      <p>The IEEE UIU Student Branch at United International University fosters a vibrant community of aspiring engineers and technologists. As a local chapter of the global IEEE network, it offers students hands-on exposure through workshops, hackathons, and research-driven events. Members collaborate on real-world projects, build leadership skills, and connect with peers and professionals across the field.</p>
+    </section>
+
+    <!-- Positions -->
+    <section class="section" aria-labelledby="pos-title">
+      <h3 id="pos-title">My Positions</h3>
+      <ul class="positions">
+        <li><strong>Chairperson</strong> — 2024–2025</li>
+        <li><strong>Member</strong> — 2021–2023</li>
+      </ul>
+    </section>
+
+    <!-- Memories -->
+    <section class="section" aria-labelledby="mem-title">
+      <h3 id="mem-title">Memories</h3>
+      <div class="gallery">
+        <!-- Replace with your real images (add width/height for better CLS) -->
+        <img src="ieeeim1.jpg" alt="IEEE event memory 1" loading="lazy" width="640" height="420">
+        <img src="ieeeim2.jpg" alt="IEEE event memory 2" loading="lazy" width="640" height="420">
+        <img src="ieeeim3.jpg" alt="IEEE event memory 3" loading="lazy" width="640" height="420">
+        <img src="ieeeim4.jpg" alt="IEEE event memory 4" loading="lazy" width="640" height="420">
+        <img src="ieeeim5.jpg" alt="IEEE event memory 5" loading="lazy" width="640" height="420">
+        <img src="ieeeim6.jpg" alt="IEEE event memory 6" loading="lazy" width="640" height="420">
+        <img src="ieeeim7.jpg" alt="IEEE event memory 7" loading="lazy" width="640" height="420">
+        <img src="ieeeim9.jpg" alt="IEEE event memory 8" loading="lazy" width="640" height="420">
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> Md. Awinul Hoque Utsha</footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <div class="lightbox-content">
+      <button class="close" id="lb-close" aria-label="Close">×</button>
+      <img id="lb-img" src="" alt="Expanded gallery image"/>
+    </div>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile nav toggle with body scroll lock + outside/Esc close
+    const navToggle = document.getElementById('navToggle');
+    const navMenu   = document.getElementById('navMenu');
+    const headerEl  = document.querySelector('header');
+
+    function closeMenu(){
+      headerEl.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded','false');
+      document.body.classList.remove('menu-lock');
+    }
+
+    navToggle.addEventListener('click', () => {
+      const open = headerEl.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('menu-lock', open);
+      if (open) navToggle.focus();
+    }, { passive: true });
+
+    // Close menu when clicking a link (mobile)
+    navMenu.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', closeMenu, { passive: true })
+    );
+
+    // Close on outside click
+    document.addEventListener('click', e => {
+      if (!headerEl.contains(e.target) && headerEl.classList.contains('nav-open')) closeMenu();
+    }, { passive: true });
+
+    // Close on Esc
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeMenu();
+    }, { passive: true });
+
+    // Simple lightbox with accessibility tweaks
+    const lb      = document.getElementById('lightbox');
+    const lbImg   = document.getElementById('lb-img');
+    const lbClose = document.getElementById('lb-close');
+
+    function openLightbox(src, alt){
+      lbImg.src = src; lbImg.alt = alt || '';
+      lb.classList.add('open');
+      lb.removeAttribute('hidden');
+      lbClose.focus();
+      document.body.classList.add('menu-lock'); // prevent background scroll while modal
+    }
+    function closeLightbox(){
+      lb.classList.remove('open');
+      lb.setAttribute('hidden','');
+      lbImg.src = '';
+      document.body.classList.remove('menu-lock');
+    }
+
+    document.querySelectorAll('.gallery img').forEach(img=>{
+      img.addEventListener('click', ()=> openLightbox(img.src, img.alt));
+      img.addEventListener('keydown', (e)=>{ if(e.key==='Enter') openLightbox(img.src, img.alt); });
+      img.setAttribute('tabindex','0');
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lb.addEventListener('click', e=>{ if(e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLightbox(); });
+  </script>
+</body>
+</html>

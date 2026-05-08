@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Utsha | Activities</title>
+
+  <style>
+    :root {
+      --pad: 16px;
+      --ink: #1e1e2f;
+      --ink-sub: #374151;
+      --brand: #2563eb;
+      --card: rgba(255,255,255,0.65);
+      --card-strong: rgba(255,255,255,0.82);
+      --border: rgba(0,0,0,0.08);
+      --shadow: 0 8px 25px rgba(0,0,0,0.08);
+      --r: 18px;
+      --maxw: 1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    img, video, svg { max-width: 100%; height: auto; display: block; }
+
+    html { font-size: 16px; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.6;
+      background: radial-gradient(circle at 25% 25%, #dbeafe 0%, #c7d2fe 30%, #f5d0fe 55%, #ffe4e6 80%);
+      background-attachment: fixed;
+      background-size: cover;
+      overflow-x: hidden;
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+    }
+
+    /* --- Header & Navigation --- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    }
+
+    nav {
+      position: relative; /* important for mobile dropdown positioning */
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 12px var(--pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      min-height: 56px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: clamp(18px, 3.5vw, 22px);
+      color: #1e293b;
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    /* NAV LINKS */
+    .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .nav-links li {
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: #1e293b;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--brand);
+      background: rgba(255,255,255,0.55);
+      text-shadow: 0 0 8px rgba(37,99,235,0.3);
+    }
+
+    /* --- HAMBURGER MENU (Mobile) --- */
+    .hamburger {
+      display: none;          /* desktop: hidden */
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .hamburger span {
+      width: 26px;
+      height: 3px;
+      background: #1e293b;
+      border-radius: 5px;
+      transition: 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ====== MOBILE BEHAVIOR ====== */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex; /* show burger on small screens */
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 0;
+        gap: 4px;
+        display: none; /* hidden by default */
+        animation: fadeIn .25s ease;
+      }
+
+      .nav-links.active {
+        display: flex; /* show when toggled */
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+        border-radius: 0;
+        padding: 12px 14px;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Sections & Cards --- */
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      margin: 20px auto;
+      padding: 20px;
+      width: min(100% - 32px, 980px);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .section h3 {
+      color: var(--brand);
+      font-size: clamp(20px, 4vw, 26px);
+      margin-bottom: 8px;
+      text-shadow: 0 0 6px rgba(147,197,253,0.4);
+    }
+
+    .activity {
+      margin: 16px auto;
+      max-width: 700px;
+      background: linear-gradient(135deg, var(--card-strong), rgba(241,245,249,0.75));
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transition: 0.2s ease;
+      position: relative;
+    }
+
+    .activity:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 26px rgba(59,130,246,0.2);
+    }
+
+    .activity h4 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      color: var(--brand);
+    }
+
+    .activity p {
+      margin: 4px 0;
+      font-size: 15px;
+      color: var(--ink-sub);
+    }
+
+    .mini-btn {
+      display: inline-block;
+      padding: 12px 16px;
+      background: linear-gradient(135deg,#2563eb,#60a5fa);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 700;
+      box-shadow: 0 6px 16px rgba(37,99,235,0.25);
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 0 36px;
+      color: #334155;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav aria-label="Primary">
+
+    <h1 class="brand">
+  <a href="index.html" style="text-decoration:none; color:inherit;">
+    Utsha
+  </a>
+</h1>
+
+
+
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="index.html#about">Home</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="publications.html">Publications</a></li>
+
+      <a href="certifications.html">Certifications</a>
+      
+      <li><a href="hobbies.html">Hobbies</a></li>
+     
+
+      <li><a class="active" href="activities.html">Activities</a></li>
+<li><a href="index.html#cv">CV</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="section">
+  <h3>Activities</h3>
+
+  <div class="activity ieee">
+    <h4>IEEE UIU Student Branch</h4>
+    <p><strong>Chairperson</strong> (2024–2025)</p>
+    <p><strong>Member</strong> (2021–2023)</p>
+    <a class="mini-btn" href="ieee.html">See more →</a>
+  </div>
+
+  <div class="activity edf">
+    <h4>UIU Entrepreneur Development Forum</h4>
+    <p><strong>President</strong> (2023–2024)</p>
+    <p><strong>Head of PR</strong> (2022–2023)</p>
+    <p><strong>Executive</strong> (2021–2022)</p>
+    <p><strong>Member</strong> (2020–2021)</p>
+    <a class="mini-btn" href="edf.html">See more →</a>
+  </div>
+
+  <div class="activity">
+    <h4>UIU Cultural Club</h4>
+    <p><strong>General Member</strong> (2020–2023)</p>
+  </div>
+
+  <div class="activity">
+    <h4>UIU HR Forum</h4>
+    <p><strong>General Member</strong> (2020–2023)</p>
+  </div>
+
+  <div class="activity">
+    <h4>UIU App Forum</h4>
+    <p><strong>General Member</strong> (2020–2023)</p>
+  </div>
+
+  <div class="activity">
+    <h4>Amnesty International</h4>
+    <p><strong>General Member</strong> (2019–Present)</p>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Md. Awinul Hoque Utsha</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Hamburger toggle
+  const ham = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (ham && navLinks) {
+    ham.addEventListener("click", () => {
+      ham.classList.toggle("active");
+      navLinks.classList.toggle("active");
+    });
+  }
+</script>
+
+</body>
+</html>

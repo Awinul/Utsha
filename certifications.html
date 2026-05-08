@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Certifications | Md. Awinul Hoque Utsha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+
+    /* =========================
+       ROOT
+    ========================= */
+
+    :root {
+
+      --bg1: #e0f2fe;
+      --bg2: #e9d5ff;
+      --bg3: #ffe4e6;
+      --bg4: #fde68a;
+      --bg5: #bbf7d0;
+
+      --ink: #0f172a;
+      --muted: #64748b;
+
+      --card: rgba(255, 255, 255, .85);
+      --card-border: rgba(0, 0, 0, .08);
+
+      --shadow:
+        0 10px 30px rgba(2, 6, 23, .12),
+        0 2px 8px rgba(2, 6, 23, .08);
+
+      --radius: 20px;
+      --radius-lg: 28px;
+
+      --maxw: 1250px;
+    }
+
+    /* =========================
+       GLOBAL
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+
+      background:
+        linear-gradient(120deg,
+          var(--bg1),
+          var(--bg2),
+          var(--bg3),
+          var(--bg4),
+          var(--bg5));
+
+      background-size: 600% 600%;
+
+      animation: bgMove 18s ease infinite;
+
+      min-height: 100vh;
+    }
+
+    @keyframes bgMove {
+
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .wrap {
+
+      max-width: var(--maxw);
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+
+      position: sticky;
+      top: 0;
+      z-index: 999;
+
+      background: rgba(255, 255, 255, .7);
+
+      backdrop-filter: blur(12px);
+
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .navbar {
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 14px;
+    }
+
+    .brand {
+
+      font-size: 1.8rem;
+      font-weight: 800;
+
+      background:
+        linear-gradient(135deg,
+          #60a5fa,
+          #a78bfa,
+          #f472b6);
+
+      -webkit-background-clip: text;
+
+      color: transparent;
+    }
+
+    .nav-links {
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .nav-links a {
+
+      text-decoration: none;
+
+      color: #1e3a8a;
+
+      font-weight: 600;
+
+      padding: 8px 14px;
+
+      border-radius: 10px;
+
+      transition: .25s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+
+      background: rgba(37, 99, 235, .1);
+      color: #2563eb;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+
+      position: relative;
+
+      margin-top: 28px;
+
+      padding: 34px;
+
+      border-radius: var(--radius-lg);
+
+      background: var(--card);
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow);
+    }
+
+    .hero::before {
+
+      content: "";
+
+      position: absolute;
+      inset: -2px;
+
+      border-radius: 30px;
+
+      padding: 2px;
+
+      background:
+        conic-gradient(
+          #60a5fa,
+          #a78bfa,
+          #f472b6,
+          #34d399,
+          #60a5fa);
+
+      -webkit-mask:
+        linear-gradient(#0000, #0000) content-box,
+        linear-gradient(#000, #000);
+
+      -webkit-mask-composite: xor;
+
+      opacity: .3;
+
+      animation: spin 8s linear infinite;
+    }
+
+    @keyframes spin {
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hero h2 {
+
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* =========================
+       CONTROLS
+    ========================= */
+
+    .controls {
+
+      margin-top: 24px;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .chip {
+
+      border: none;
+
+      padding: 10px 16px;
+
+      border-radius: 999px;
+
+      background: white;
+
+      border: 1px solid var(--card-border);
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition: .25s;
+    }
+
+    .chip.active {
+
+      background: #dbeafe;
+      color: #2563eb;
+    }
+
+    .search-box {
+
+      flex: 1;
+      min-width: 240px;
+
+      background: white;
+
+      border-radius: 14px;
+
+      border: 1px solid var(--card-border);
+
+      display: flex;
+      align-items: center;
+
+      padding: 0 14px;
+    }
+
+    .search-box input {
+
+      width: 100%;
+      border: none;
+      outline: none;
+
+      background: transparent;
+
+      padding: 14px 6px;
+
+      font-size: 15px;
+    }
+
+    /* =========================
+       GRID
+    ========================= */
+
+    .grid {
+
+      margin-top: 32px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(350px, 1fr));
+
+      gap: 26px;
+    }
+
+    /* =========================
+       CARD
+    ========================= */
+
+    .card {
+
+      background: var(--card);
+
+      border-radius: var(--radius);
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow);
+
+      transition: .3s;
+    }
+
+    .card:hover {
+
+      transform: translateY(-8px);
+    }
+
+    /* =========================
+       PDF
+    ========================= */
+
+    .pdf-banner {
+
+      height: 240px;
+
+      background: white;
+    }
+
+    .pdf-banner iframe {
+
+      width: 100%;
+      height: 100%;
+
+      border: none;
+    }
+
+    /* =========================
+       CONTENT
+    ========================= */
+
+    .content {
+
+      padding: 22px;
+    }
+
+    .serial {
+
+      width: 42px;
+      height: 42px;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          #60a5fa,
+          #a78bfa);
+
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: 800;
+
+      margin-bottom: 14px;
+    }
+
+    .content h4 {
+
+      font-size: 1.15rem;
+
+      margin-bottom: 10px;
+    }
+
+    .content p {
+
+      color: #475569;
+
+      line-height: 1.7;
+    }
+
+    /* =========================
+       BADGES
+    ========================= */
+
+    .badges {
+
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 16px;
+    }
+
+    .badge {
+
+      padding: 6px 12px;
+
+      border-radius: 999px;
+
+      background: #f1f5f9;
+
+      color: #475569;
+
+      font-size: .85rem;
+
+      font-weight: 700;
+    }
+
+    /* =========================
+       BUTTON
+    ========================= */
+
+    .actions {
+
+      margin-top: 20px;
+    }
+
+    .btn {
+
+      display: inline-block;
+
+      text-decoration: none;
+
+      padding: 11px 16px;
+
+      border-radius: 12px;
+
+      font-weight: 700;
+
+      background:
+        linear-gradient(
+          135deg,
+          #60a5fa,
+          #a78bfa);
+
+      color: white;
+
+      transition: .25s;
+    }
+
+    .btn:hover {
+
+      transform: translateY(-2px);
+    }
+
+    /* =========================
+       EMPTY
+    ========================= */
+
+    .empty {
+
+      display: none;
+
+      margin-top: 30px;
+
+      text-align: center;
+
+      padding: 40px;
+
+      border-radius: 20px;
+
+      background: rgba(255, 255, 255, .7);
+
+      box-shadow: var(--shadow);
+
+      font-weight: 600;
+
+      color: #475569;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+
+      padding: 50px 20px;
+
+      text-align: center;
+
+      color: #475569;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:768px) {
+
+      .hero {
+        padding: 24px;
+      }
+
+      .hero h2 {
+        font-size: 1.7rem;
+      }
+
+      .navbar {
+        justify-content: center;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header>
+    <div class="wrap navbar" role="navigation" aria-label="Primary">
+     <h1 class="brand">
+  <a href="index.html" style="text-decoration:none; color:inherit;">
+    Utsha
+  </a>
+</h1>
+      
+   
+      <nav id="navMenu" class="nav-links">
+        <a href="index.html#about">Home</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="publications.html">Publications</a>
+        
+        <a href="hobbies.html" class="active" aria-current="page">Hobbies</a>
+        <a href="activities.html">Activities</a>
+        <a href="index.html#cv">CV</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================
+       MAIN
+  ========================= -->
+
+  <main class="wrap">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <h2>
+        Certifications & Achievements
+      </h2>
+
+      <p>
+        Professional certifications, conference participation,
+        workshops, technical training, and academic achievements.
+      </p>
+
+      <!-- CONTROLS -->
+
+      <div class="controls">
+
+        <button class="chip active" data-filter="all">
+          All
+        </button>
+
+        <button class="chip" data-filter="Conference">
+          Conference
+        </button>
+
+        <button class="chip" data-filter="research">
+          Research
+        </button>
+
+        <button class="chip" data-filter="workshop">
+          Workshop
+        </button>
+
+        <button class="chip" data-filter="development">
+          Development
+        </button>
+
+        <div class="search-box">
+
+          <input
+            type="text"
+            id="search"
+            placeholder="Search certificates..." />
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         GRID
+    ========================= -->
+
+    <section class="grid" id="grid">
+
+      <!-- CARD 1 -->
+
+      <div class="card"
+        data-tags="research ai"
+        data-title="Co-relation-based Feature Extraction">
+
+        <div class="pdf-banner">
+
+          <iframe
+            src="Co-relation-based Feture extraction2024.pdf">
+          </iframe>
+
+        </div>
+
+        <div class="content">
+
+          <div class="serial">
+            01
+          </div>
+
+          <h4>
+            Co-relation-based Feature Extraction
+          </h4>
+
+          <p>
+            Correlation-based Feature Extraction to Improve Classification Accuracy.
+          </p>
+
+          <div class="badges">
+
+            <span class="badge">
+              Research
+            </span>
+
+            <span class="badge">
+              AI
+            </span>
+
+            <span class="badge">
+              2024
+            </span>
+
+          </div>
+
+          <div class="actions">
+
+            <a
+              href="Co-relation-based Feture extraction2024.pdf"
+              target="_blank"
+              class="btn">
+
+              View Certificate
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 2 -->
+
+      <div class="card"
+        data-tags="research"
+        data-title="Comparative Analysis ECCE 2025">
+
+        <div class="pdf-banner">
+
+          <iframe
+            src="Comparative_analysis_ECCE2025.pdf">
+          </iframe>
+
+        </div>
+
+        <div class="content">
+
+          <div class="serial">
+            02
+          </div>
+
+          <h4>
+            Comparative Analysis – ECCE 2025
+          </h4>
+
+          <p>
+            Comparative Analysis between Monolithic and Microservices Architecture Based on Web Streaming Applications.
+          </p>
+
+          <div class="badges">
+
+            <span class="badge">
+              ECCE
+            </span>
+
+            <span class="badge">
+              Research
+            </span>
+
+            <span class="badge">
+              2025
+            </span>
+
+          </div>
+
+          <div class="actions">
+
+            <a
+              href="Comparative_analysis_ECCE2025.pdf"
+              target="_blank"
+              class="btn">
+
+              View Certificate
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 3 -->
+
+      <div class="card"
+        data-tags="research ai"
+        data-title="Neuro Symbolic AI">
+
+        <div class="pdf-banner">
+
+          <iframe
+            src="Neuro-Symbolic_AI_WICON2025.pdf">
+          </iframe>
+
+        </div>
+
+        <div class="content">
+
+          <div class="serial">
+            03
+          </div>
+
+          <h4>
+            Neuro-Symbolic AI – WICON 2025
+          </h4>
+
+          <p>
+           Neuro-Symbolic AI for Transparent Decision-Making in High-Stakes Domains.
+          </p>
+
+          <div class="badges">
+
+            <span class="badge">
+              WICON
+            </span>
+
+            <span class="badge">
+              AI
+            </span>
+
+            <span class="badge">
+              2025
+            </span>
+
+          </div>
+
+          <div class="actions">
+
+            <a
+              href="Neuro-Symbolic_AI_WICON2025.pdf"
+              target="_blank"
+              class="btn">
+
+              View Certificate
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 4 -->
+
+      <div class="card"
+        data-tags="research ai"
+        data-title="Ontology Based Knowledge Graphs">
+
+        <div class="pdf-banner">
+
+          <iframe
+            src="Ontology-Based Knowledge Graphs_WICON2025.pdf">
+          </iframe>
+
+        </div>
+
+        <div class="content">
+
+          <div class="serial">
+            04
+          </div>
+
+          <h4>
+            Ontology-Based Knowledge Graphs
+          </h4>
+
+          <p>
+            Ontology-Based Knowledge Graphs for Detecting Advanced Persistent Threats (APTs) with Neurosymbolic AI .
+          </p>
+
+          <div class="badges">
+
+            <span class="badge">
+              WICON
+            </span>
+
+            <span class="badge">
+              AI
+            </span>
+
+            <span class="badge">
+              2025
+            </span>
+
+          </div>
+
+          <div class="actions">
+
+            <a
+              href="Ontology-Based Knowledge Graphs_WICON2025.pdf"
+              target="_blank"
+              class="btn">
+
+              View Certificate
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 5 -->
+
+      <div class="card"
+        data-tags="research ai"
+        data-title="Sentiment Analysis for Banglish Text using Machine Learning Approach">
+
+        <div class="pdf-banner">
+
+          <iframe
+            src="Sentimental_Analysis_ICCIT2024.pdf">
+          </iframe>
+
+        </div>
+
+        <div class="content">
+
+          <div class="serial">
+            05
+          </div>
+
+          <h4>
+            Sentimental Analysis – ICCIT 2024
+          </h4>
+
+          <p>
+            Sentiment Analysis for Banglish Text using Machine Learning Approach.
+          </p>
+
+          <div class="badges">
+
+            <span class="badge">
+              ICCIT
+            </span>
+
+            <span class="badge">
+              AI
+            </span>
+
+            <span class="badge">
+              2024
+            </span>
+
+          </div>
+
+          <div class="actions">
+
+            <a
+              href="Sentimental_Analysis_ICCIT2024.pdf"
+              target="_blank"
+              class="btn">
+
+              View Certificate
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 6 -->
+
+      <div class="card"
+        data-tags="research"
+        data-title="Smart Grid ICCIT 2024">
+
+        <div class="pdf-banner">
+
+          <iframe
+            src="Smart_Grid_ICCIT2024.pdf">
+          </iframe>
+
+        </div>
+
+        <div class="content">
+
+          <div class="serial">
+            06
+          </div>
+
+          <h4>
+            Smart Grid – ICCIT 2024
+          </h4>
+
+          <p>
+            Smart Grid Stability Prediction for Efficient Power Management using Machine Learning.
+          </p>
+
+          <div class="badges">
+
+            <span class="badge">
+              ICCIT
+            </span>
+
+            <span class="badge">
+              Research
+            </span>
+
+            <span class="badge">
+              2024
+            </span>
+
+          </div>
+
+          <div class="actions">
+
+            <a
+              href="Smart_Grid_ICCIT2024.pdf"
+              target="_blank"
+              class="btn">
+
+              View Certificate
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 7 -->
+
+      <div class="card"
+        data-tags="workshop"
+        data-title="Volunteer ICCIT 2024">
+
+        <div class="pdf-banner">
+
+          <iframe
+            src="Volunteer_ICCIT2024.pdf">
+          </iframe>
+
+        </div>
+
+        <div class="content">
+
+          <div class="serial">
+            07
+          </div>
+
+          <h4>
+            Volunteer – ICCIT 2024
+          </h4>
+
+          <p>
+            Volunteer and organizational contribution certificate.
+          </p>
+
+          <div class="badges">
+
+            <span class="badge">
+              Volunteer
+            </span>
+
+            <span class="badge">
+              ICCIT
+            </span>
+
+            <span class="badge">
+              2024
+            </span>
+
+          </div>
+
+          <div class="actions">
+
+            <a
+              href="Volunteer_ICCIT2024.pdf"
+              target="_blank"
+              class="btn">
+
+              View Certificate
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+            <!-- CARD 7 -->
+
+      <div class="card"
+        data-tags="workshop"
+        data-title="High School Students’ Performance Analyzer using Machine Learning">
+
+        <div class="pdf-banner">
+
+          <iframe
+            src="High_School Students' performence_ICCIT2024.pdf">
+          </iframe>
+
+        </div>
+
+        <div class="content">
+
+          <div class="serial">
+            07
+          </div>
+
+          <h4>
+            High_School Students' – ICCIT 2024
+          </h4>
+
+          <p>
+            High School Students’ Performance Analyzer using Machine Learning.
+          </p>
+
+          <div class="badges">
+
+            <span class="badge">
+              Volunteer
+            </span>
+
+            <span class="badge">
+              ICCIT
+            </span>
+
+            <span class="badge">
+              2024
+            </span>
+
+          </div>
+
+          <div class="actions">
+
+            <a
+              href="High_School Students' performence_ICCIT2024.pdf"
+              target="_blank"
+              class="btn">
+
+              View Certificate
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+       <!-- CARD 7 -->
+
+      <div class="card"
+        data-tags="workshop"
+        data-title=" A Unified Adversarially-Robust and Privacy-Preserving Federated Learning Framework for Multimodal Healthcare IoT.
+          </p>">
+
+        <div class="pdf-banner">
+
+          <iframe
+            src="Unified_Adversarially-Robust_RAAICON2025.pdf">
+          </iframe>
+
+        </div>
+
+        <div class="content">
+
+          <div class="serial">
+            07
+          </div>
+
+          <h4>
+            Adversarially-Robust – ICCIT 2024
+          </h4>
+
+          <p>
+            A Unified Adversarially-Robust and Privacy-Preserving Federated Learning Framework for Multimodal Healthcare IoT.
+          </p>
+
+          <div class="badges">
+
+            <span class="badge">
+              Volunteer
+            </span>
+
+            <span class="badge">
+              ICCIT
+            </span>
+
+            <span class="badge">
+              2024
+            </span>
+
+          </div>
+
+          <div class="actions">
+
+            <a
+              href="Unified_Adversarially-Robust_RAAICON2025.pdf"
+              target="_blank"
+              class="btn">
+
+              View Certificate
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CARD 8 -->
+       <!-- =========================
+     CARD 08
+========================= -->
+
+<div class="card"
+data-tags="development"
+data-title="Basic Computer Skills And Foundation">
+
+  <div class="pdf-banner">
+
+    <iframe
+      src="Basic_Computer_Skills_And_Foundation.pdf">
+    </iframe>
+
+  </div>
+
+  <div class="content">
+
+    <div class="serial">
+      08
+    </div>
+
+    <h4>
+      Basic Computer Skills And Foundation
+    </h4>
+
+    <p>
+      Fundamental computer operations, digital literacy,
+      software usage, and technical foundations.
+    </p>
+
+    <div class="badges">
+
+      <span class="badge">
+        Computer Skills
+      </span>
+
+      <span class="badge">
+        Foundation
+      </span>
+
+      <span class="badge">
+        Training
+      </span>
+
+    </div>
+
+    <div class="actions">
+
+      <a
+        href="Basic_Computer_Skills_And_Foundation.pdf"
+        target="_blank"
+        class="btn">
+
+        View Certificate
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================
+     CARD 09
+========================= -->
+
+<div class="card"
+data-tags="workshop"
+data-title="SPAC 2022 Volunteer">
+
+  <div class="pdf-banner">
+
+    <iframe
+      src="SPAC_2022.pdf">
+    </iframe>
+
+  </div>
+
+  <div class="content">
+
+    <div class="serial">
+      09
+    </div>
+
+    <h4>
+      SPAC 2022 – Volunteer
+    </h4>
+
+    <p>
+      Volunteer participation and organizational
+      contribution certificate at SPAC 2022.
+    </p>
+
+    <div class="badges">
+
+      <span class="badge">
+        Volunteer
+      </span>
+
+      <span class="badge">
+        SPAC
+      </span>
+
+      <span class="badge">
+        2022
+      </span>
+
+    </div>
+
+    <div class="actions">
+
+      <a
+        href="SPAC_2022.pdf"
+        target="_blank"
+        class="btn">
+
+        View Certificate
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================
+     CARD 10
+========================= -->
+
+<div class="card"
+data-tags="workshop"
+data-title="Job Interviewing Skills Masterclass">
+
+  <div class="pdf-banner">
+
+    <iframe
+      src="Job_Interviewing_Skills_Masterclass.pdf">
+    </iframe>
+
+  </div>
+
+  <div class="content">
+
+    <div class="serial">
+      10
+    </div>
+
+    <h4>
+      Job Interviewing Skills Masterclass
+    </h4>
+
+    <p>
+      Professional interview preparation,
+      communication skills, and career readiness training.
+    </p>
+
+    <div class="badges">
+
+      <span class="badge">
+        Career
+      </span>
+
+      <span class="badge">
+        Workshop
+      </span>
+
+      <span class="badge">
+        Skills
+      </span>
+
+    </div>
+
+    <div class="actions">
+
+      <a
+        href="Job_Interviewing_Skills_Masterclass.pdf"
+        target="_blank"
+        class="btn">
+
+        View Certificate
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================
+     CARD 11
+========================= -->
+
+<div class="card"
+data-tags="development"
+data-title="Stock Photography">
+
+  <div class="pdf-banner">
+
+    <iframe
+      src="Stock Photography.pdf">
+    </iframe>
+
+  </div>
+
+  <div class="content">
+
+    <div class="serial">
+      11
+    </div>
+
+    <h4>
+      Stock Photography
+    </h4>
+
+    <p>
+      Photography fundamentals, stock image creation,
+      visual composition, and creative media skills.
+    </p>
+
+    <div class="badges">
+
+      <span class="badge">
+        Photography
+      </span>
+
+      <span class="badge">
+        Creative
+      </span>
+
+      <span class="badge">
+        Media
+      </span>
+
+    </div>
+
+    <div class="actions">
+
+      <a
+        href="Stock Photography.pdf"
+        target="_blank"
+        class="btn">
+
+        View Certificate
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+      <div class="card"
+        data-tags="development"
+        data-title="Python Developer Bootcamp">
+
+        <div class="pdf-banner">
+
+          <iframe
+            src="Python_Developer_Essential_Immersive_Bootcamp.pdf">
+          </iframe>
+
+        </div>
+
+        <div class="content">
+
+          <div class="serial">
+            08
+          </div>
+
+          <h4>
+            Python Developer Essential Bootcamp
+          </h4>
+
+          <p>
+            Python programming and practical software development training.
+          </p>
+
+          <div class="badges">
+
+            <span class="badge">
+              Python
+            </span>
+
+            <span class="badge">
+              Development
+            </span>
+
+          </div>
+
+          <div class="actions">
+
+            <a
+              href="Python_Developer_Essential_Immersive_Bootcamp.pdf"
+              target="_blank"
+              class="btn">
+
+              View Certificate
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      
+    </section>
+
+    <!-- EMPTY -->
+
+    <div class="empty" id="emptyState">
+
+      No certificate found.
+
+    </div>
+
+    
+
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    © 2026 Md. Awinul Hoque Utsha
+
+  </footer>
+
+  <!-- =========================
+       SCRIPT
+  ========================= -->
+
+  <script>
+
+    const chips =
+      document.querySelectorAll('.chip');
+
+    const cards =
+      document.querySelectorAll('.card');
+
+    const searchInput =
+      document.getElementById('search');
+
+    const emptyState =
+      document.getElementById('emptyState');
+
+    function filterCards() {
+
+      const activeFilter =
+        document.querySelector('.chip.active')
+          .dataset.filter;
+
+      const query =
+        searchInput.value.toLowerCase();
+
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+
+        const tags =
+          card.dataset.tags.toLowerCase();
+
+        const title =
+          card.dataset.title.toLowerCase();
+
+        const text =
+          card.innerText.toLowerCase();
+
+        const matchesFilter =
+          activeFilter === 'all'
+          || tags.includes(activeFilter);
+
+        const matchesSearch =
+          title.includes(query)
+          || text.includes(query);
+
+        if (matchesFilter && matchesSearch) {
+
+          card.style.display = 'block';
+
+          visibleCount++;
+
+        } else {
+
+          card.style.display = 'none';
+
+        }
+
+      });
+
+      emptyState.style.display =
+        visibleCount === 0 ? 'block' : 'none';
+
+    }
+
+    chips.forEach(chip => {
+
+      chip.addEventListener('click', () => {
+
+        chips.forEach(c =>
+          c.classList.remove('active'));
+
+        chip.classList.add('active');
+
+        filterCards();
+
+      });
+
+    });
+
+    searchInput.addEventListener(
+      'input',
+      filterCards);
+
+  </script>
+
+</body>
+
+</html>
