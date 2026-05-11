@@ -534,6 +534,181 @@
 
     }
 
+
+    /* =========================
+   MOBILE FRIENDLY NAV PATCH
+   ========================= */
+
+/* Better container spacing */
+.wrap{
+  max-width:1120px;
+  margin:0 auto;
+  padding:16px;
+}
+
+@media (min-width:640px){
+  .wrap{
+    padding:22px;
+  }
+}
+
+/* Sticky glass header */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+/* Navbar */
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+/* Brand */
+.brand{
+  margin:0;
+  white-space:nowrap;
+  font-size:1.35rem;
+  font-weight:800;
+  background:linear-gradient(135deg,#60a5fa,#a78bfa,#f472b6);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+/* Hamburger button */
+.nav-toggle{
+  display:none;
+  appearance:none;
+  border:1px solid rgba(0,0,0,.08);
+  background:#fff;
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+/* Desktop nav */
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#0f172a;
+  font-weight:600;
+  padding:10px 12px;
+  border-radius:12px;
+  transition:.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus{
+  color:#2563eb;
+  background:rgba(37,99,235,.08);
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+  .nav-toggle{
+    display:inline-flex;
+  }
+
+  .nav-links{
+    display:none;
+    width:100%;
+    margin-top:10px;
+    padding:12px;
+    border-radius:14px;
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 28px rgba(0,0,0,.08);
+
+    flex-direction:column;
+    align-items:stretch;
+    gap:8px;
+  }
+
+  .nav-links a{
+    width:100%;
+  }
+
+  .navbar{
+    flex-wrap:wrap;
+  }
+
+  .navbar.nav-open .nav-links{
+    display:flex;
+  }
+
+  .hero{
+    padding:14px;
+  }
+
+  .hero h2{
+    font-size:1.3rem;
+  }
+
+  .controls{
+    flex-direction:column;
+  }
+
+  .search{
+    width:100%;
+  }
+
+  .pub-card{
+    padding:14px;
+  }
+
+  .pub-links{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .btn{
+    justify-content:center;
+  }
+}
+
+/* Small phones */
+@media (max-width:480px){
+
+  .wrap{
+    padding:12px;
+  }
+
+  .pub-title{
+    font-size:1rem;
+  }
+
+  .pub-meta{
+    font-size:.9rem;
+  }
+
+  .badge{
+    font-size:.72rem;
+  }
+}
+
+/* Accessibility */
+:where(a,button,input):focus-visible{
+  outline:2px solid #60a5fa;
+  outline-offset:2px;
+  border-radius:12px;
+}
+
   </style>
 
 </head>
@@ -1182,6 +1357,309 @@
       </div>
 
 
+
+
+      <!-- ECCE 2026 -->
+<div class="card"
+     data-tags="conference"
+     data-title="Adversarial Attacks on Intrusion Detection Systems">
+
+  <div class="pdf-banner">
+
+    <iframe
+      src="ECCT.pdf">
+    </iframe>
+
+  </div>
+
+  <div class="content">
+
+    <div class="serial">
+      08
+    </div>
+
+    <h4>
+      IDS Adversarial Attacks – ECCT 2026
+    </h4>
+
+    <p>
+      Adversarial Attacks on Intrusion Detection Systems: How ML-based IDS Can Be Tricked and Defenses That Work.
+    </p>
+
+    <div class="badges">
+
+      <span class="badge">
+        Conference
+      </span>
+
+      <span class="badge">
+        ECCT
+      </span>
+
+      <span class="badge">
+        2026
+      </span>
+
+    </div>
+
+    <div class="actions">
+
+      <a
+        href="ECCT.pdf"
+        target="_blank"
+        class="btn">
+
+        View Certificate
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ICCIT 2025 -->
+<div class="card"
+     data-tags="conference"
+     data-title="Mitigating Adversarial Vulnerabilities in Brain Tumor Imaging">
+
+  <div class="pdf-banner">
+
+    <iframe
+      src="344_AuthorCertificate.pdf">
+    </iframe>
+
+  </div>
+
+  <div class="content">
+
+    <div class="serial">
+      09
+    </div>
+
+    <h4>
+      Brain Tumor Imaging – ICCIT 2025
+    </h4>
+
+    <p>
+      Mitigating Adversarial Vulnerabilities in Brain Tumor Imaging: Threat Analysis and Defense Strategies.
+    </p>
+
+    <div class="badges">
+
+      <span class="badge">
+        Conference
+      </span>
+
+      <span class="badge">
+        ICCIT
+      </span>
+
+      <span class="badge">
+        2025
+      </span>
+
+    </div>
+
+    <div class="actions">
+
+      <a
+        href="344_AuthorCertificate.pdf"
+        target="_blank"
+        class="btn">
+
+        View Certificate
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ICCIT 2025 -->
+<div class="card"
+     data-tags="conference"
+     data-title="Peer-Relative Percentile Features">
+
+  <div class="pdf-banner">
+
+    <iframe
+      src="556_AuthorCertificate.pdf">
+    </iframe>
+
+  </div>
+
+  <div class="content">
+
+    <div class="serial">
+      10
+    </div>
+
+    <h4>
+      Peer-Relative Features – ICCIT 2025
+    </h4>
+
+    <p>
+      From Absolute to Relative: Peer-Relative Percentile Features for Robust Student Performance Prediction.
+    </p>
+
+    <div class="badges">
+
+      <span class="badge">
+        Conference
+      </span>
+
+      <span class="badge">
+        ICCIT
+      </span>
+
+      <span class="badge">
+        2025
+      </span>
+
+    </div>
+
+    <div class="actions">
+
+      <a
+        href="556_AuthorCertificate.pdf"
+        target="_blank"
+        class="btn">
+
+        View Certificate
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ICCIT 2025 -->
+<div class="card"
+     data-tags="conference"
+     data-title="Neuro-Symbolic AI for Transparent and Adaptive Intrusion Detection Systems">
+
+  <div class="pdf-banner">
+
+    <iframe
+      src="1038_AuthorCertificate.pdf">
+    </iframe>
+
+  </div>
+
+  <div class="content">
+
+    <div class="serial">
+      11
+    </div>
+
+    <h4>
+      Neuro-Symbolic IDS – ICCIT 2025
+    </h4>
+
+    <p>
+      Neuro-Symbolic AI for Transparent and Adaptive Intrusion Detection Systems.
+    </p>
+
+    <div class="badges">
+
+      <span class="badge">
+        Conference
+      </span>
+
+      <span class="badge">
+        ICCIT
+      </span>
+
+      <span class="badge">
+        2025
+      </span>
+
+    </div>
+
+    <div class="actions">
+
+      <a
+        href="1038_AuthorCertificate.pdf"
+        target="_blank"
+        class="btn">
+
+        View Certificate
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- DIU Conference 2026 -->
+<div class="card"
+     data-tags="conference"
+     data-title="Medical Text Simplification for Rural Patients">
+
+  <div class="pdf-banner">
+
+    <iframe
+      src="594.pdf">
+    </iframe>
+
+  </div>
+
+  <div class="content">
+
+    <div class="serial">
+      12
+    </div>
+
+    <h4>
+      Medical Text Simplification – ECCT 2026
+    </h4>
+
+    <p>
+      Medical Text Simplification for Rural Patients: Safe, Accessible, and Equity-Focused NLP Solutions.
+    </p>
+
+    <div class="badges">
+
+      <span class="badge">
+        Conference
+      </span>
+
+      <span class="badge">
+        ECCT
+      </span>
+
+      <span class="badge">
+        2026
+      </span>
+
+    </div>
+
+    <div class="actions">
+
+      <a
+        href="594.pdf"
+        target="_blank"
+        class="btn">
+
+        View Certificate
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
       <!-- CARD 8 -->
        <!-- =========================
      CARD 08
@@ -1606,6 +2084,84 @@ data-title="Stock Photography">
       filterCards);
 
   </script>
+
+
+<script>
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+
+  // Mobile menu toggle
+  const navToggle = document.getElementById("navToggle");
+  const navbar = document.querySelector(".navbar");
+
+  navToggle.addEventListener("click", () => {
+    navbar.classList.toggle("nav-open");
+
+    const expanded =
+      navToggle.getAttribute("aria-expanded") === "true";
+
+    navToggle.setAttribute("aria-expanded", !expanded);
+  });
+
+  // Close menu on link click
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navbar.classList.remove("nav-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  // Filter + Search
+  const chips = document.querySelectorAll('.chip');
+  const items = Array.from(document.querySelectorAll('.item'));
+  const search = document.getElementById('pubSearch');
+
+  function apply(){
+    const active =
+      document.querySelector('.chip.active')?.dataset.year || 'all';
+
+    const q = (search.value || '')
+      .toLowerCase()
+      .trim();
+
+    items.forEach(it => {
+      const yearOk =
+        active === 'all' || it.dataset.year === active;
+
+      const text = it.textContent.toLowerCase();
+      const qOk = !q || text.includes(q);
+
+      it.style.display = (yearOk && qOk) ? '' : 'none';
+    });
+  }
+
+  chips.forEach(ch =>
+    ch.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      ch.classList.add('active');
+      apply();
+    })
+  );
+
+  search.addEventListener('input', apply);
+
+  // Copy BibTeX
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.bibtex;
+      const el = document.querySelector(id);
+
+      if (!el) return;
+
+      navigator.clipboard.writeText(el.value || '').then(() => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = old, 1200);
+      });
+    });
+  });
+</script>
+
 
 </body>
 

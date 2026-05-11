@@ -713,19 +713,27 @@ header{
         });
       });
     });
-    <script>
+    
+<script>
+  // Mobile menu toggle
   const navToggle = document.getElementById("navToggle");
-  const navMenu = document.getElementById("navMenu");
+  const navbar = document.querySelector(".navbar");
 
   navToggle.addEventListener("click", () => {
-    document.querySelector(".navbar").classList.toggle("nav-open");
+    navbar.classList.toggle("nav-open");
 
     const expanded =
       navToggle.getAttribute("aria-expanded") === "true";
 
     navToggle.setAttribute("aria-expanded", !expanded);
   });
+
+  // Close menu when clicking links
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navbar.classList.remove("nav-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+  });
 </script>
-  </script>
-</body>
 </html>

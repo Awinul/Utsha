@@ -130,45 +130,39 @@
     }
 
     /* ====== MOBILE BEHAVIOR ====== */
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex; /* show burger on small screens */
-      }
+   @media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
 
-      .nav-links {
-        position: absolute;
-        top: 56px;
-        left: 0;
-        right: 0;
-        width: 100%;
-        background: rgba(255,255,255,0.95);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        align-items: stretch;
-        padding: 10px 0;
-        gap: 4px;
-        display: none; /* hidden by default */
-        animation: fadeIn .25s ease;
-      }
+  .nav-links {
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 0;
+    gap: 4px;
+    display: none;
+    animation: fadeIn .25s ease;
+  }
 
-      .nav-links.active {
-        display: flex; /* show when toggled */
-      }
+  .nav-links.active {
+    display: flex;
+  }
 
-      .nav-links a {
-        width: 100%;
-        text-align: center;
-        border-radius: 0;
-        padding: 12px 14px;
-      }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+    border-radius: 0;
+    padding: 12px 14px;
+  }
+}
     /* --- Sections & Cards --- */
     .section {
       background: var(--card);
@@ -260,7 +254,9 @@
       <li><a href="index.html#projects">Projects</a></li>
       <li><a href="publications.html">Publications</a></li>
 
-      <a href="certifications.html">Certifications</a>
+    <li>
+  <a href="certifications.html">Certifications</a>
+</li>
       
       <li><a href="hobbies.html">Hobbies</a></li>
      
